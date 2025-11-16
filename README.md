@@ -35,6 +35,12 @@ The project exposes the following npm scripts:
 
 Tailwind CSS powers the responsive layout. Components and routes use semantic HTML and embed schema.org JSON-LD data for SEO. The sitemap, RSS feed, and robots directives are generated via Next.js route handlers so that search engines receive up-to-date metadata for each article.
 
+### Giao diện quản trị SEO chuẩn Google.com.vn
+
+- Trang `/admin` cung cấp bảng điều khiển quản trị bằng tiếng Việt giúp đội nội dung đối chiếu checklist kỹ thuật, nội dung và entity theo hướng dẫn [Google Search Central](https://www.google.com.vn/search/howsearchworks).
+- Metadata của trang này bao gồm canonical URL, Open Graph/Twitter tags và ba đoạn JSON-LD (`WebPage`, `BreadcrumbList`, `HowTo`) để đạt chuẩn Rich Results.
+- Phần giao diện hiển thị KPI, checklist hành động và liên kết nhanh đến Search Console, PageSpeed Insights, Rich Results Test và Google Analytics nhằm đảm bảo "full SEO" khi triển khai sản phẩm.
+
 ## Deployment
 
 1. Install dependencies with `npm install`.

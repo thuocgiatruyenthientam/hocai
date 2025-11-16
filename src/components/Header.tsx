@@ -18,7 +18,7 @@ export function Header() {
             {siteConfig.description}
           </p>
         </div>
-        <nav aria-label="Điều hướng chính" className="mt-4 flex gap-4 text-sm font-medium sm:mt-0">
+        <nav aria-label="Điều hướng chính" className="mt-4 flex flex-wrap gap-3 text-sm font-medium sm:mt-0">
           {categories.map((category) => (
             <Link
               key={category}
@@ -28,6 +28,12 @@ export function Header() {
               {getCategoryLabel(category)}
             </Link>
           ))}
+          <Link
+            href="/admin"
+            className="rounded-md border border-brand px-3 py-2 text-brand transition hover:bg-brand hover:text-white"
+          >
+            Quản trị SEO
+          </Link>
         </nav>
       </div>
     </header>

@@ -56,3 +56,25 @@ Khi triển khai lên VPS hoặc hosting truyền thống, bạn có thể chu�
 | `/var/www/hocai/storage/logs` | Tách log vận hành để dễ theo dõi. | `mkdir -p /var/www/hocai/storage/logs` |
 
 Bạn cũng có thể tham khảo trang `/hosting` trên ứng dụng để xem bảng tổng hợp này cùng JSON-LD hướng dẫn từng bước.
+
+### Cơ sở dữ liệu MySQL cho DA PMA SignOn
+
+Repository đã kèm sẵn file `database/hocai_schema.sql` mô tả đầy đủ cấu trúc schema và dữ liệu mẫu cho nền tảng MySQL trên máy chủ **DA PMA SignOn**. Các tham số mặc định:
+
+- **Tên database:** `h51ecb951c_hocai`
+- **User:** `h51ecb951c_hocai`
+- **Password:** `phat2009`
+
+Cách triển khai nhanh:
+
+1. Đăng nhập vào phpMyAdmin (PMA) trên môi trường DA và tạo database `h51ecb951c_hocai` nếu chưa tồn tại.
+2. Import file `database/hocai_schema.sql` thông qua giao diện PMA _hoặc_ dùng CLI:
+
+   ```bash
+   mysql -h <may-chu> -u h51ecb951c_hocai -p'hat2009' < database/hocai_schema.sql
+   ```
+
+3. Sau khi import, bảng `categories`, `authors`, `articles`, `tags`, `article_tags` và `article_revisions` sẽ sẵn sàng với dữ liệu mẫu để Next.js truy vấn.
+4. Cập nhật biến môi trường backend (ví dụ `DATABASE_URL` hoặc `MYSQL_URI`) trỏ tới thông tin đăng nhập trên để ứng dụng sản xuất đọc dữ liệu thực.
+
+> Nếu tài khoản của bạn không có quyền `CREATE USER`, hãy bỏ qua phần đầu file schema (dòng tạo user) hoặc nhờ quản trị cấp quyền trước khi chạy script.

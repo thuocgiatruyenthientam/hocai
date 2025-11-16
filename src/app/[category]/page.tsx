@@ -24,8 +24,8 @@ export function generateMetadata({ params }: CategoryPageProps): Metadata {
   }
 
   const readableCategory = getCategoryLabel(category);
-  const pageTitle = `Góc nhìn ${readableCategory}`;
-  const description = `Những phân tích ${readableCategory} mới nhất từ đội ngũ biên tập Tạp chí HōcAI.`;
+  const pageTitle = `Chuyên mục ${readableCategory}`;
+  const description = `Bài viết cập nhật về ${readableCategory.toLowerCase()} từ bác sĩ HōcAI để bạn theo dõi và phòng ngừa hiệu quả.`;
   const canonical = absoluteUrl(`/${category}`);
 
   return {
@@ -76,10 +76,10 @@ export default function CategoryPage({ params }: CategoryPageProps) {
     <section className="space-y-8">
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }} />
       <header className="space-y-2">
-        <p className="text-xs uppercase tracking-widest text-brand">Chủ đề</p>
+        <p className="text-xs uppercase tracking-widest text-brand">Chuyên mục sức khỏe</p>
         <h1 className="text-4xl font-semibold text-slate-900">{readableCategory}</h1>
         <p className="text-slate-600">
-          Câu chuyện, khung phương pháp và thực tiễn tốt nhất dành cho các đội {readableCategory}.
+          Tư vấn điều trị, chế độ sinh hoạt và checklist tái khám dành riêng cho nhóm bệnh {readableCategory.toLowerCase()}.
         </p>
       </header>
       <div className="grid gap-6 md:grid-cols-2">

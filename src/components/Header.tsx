@@ -3,9 +3,17 @@ import { getCategories, getCategoryLabel } from "@/lib/articles";
 import { siteConfig } from "@/lib/site";
 
 export function Header() {
-  const categories = getCategories().sort((a, b) =>
-    getCategoryLabel(a).localeCompare(getCategoryLabel(b), "vi")
-  );
+  const preferredOrder = ["soi-than", "suy-than", "viem-cau-than", "dau-khop"];
+  const categories = getCategories().sort((a, b) => {
+    const indexA = preferredOrder.indexOf(a);
+    const indexB = preferredOrder.indexOf(b);
+    if (indexA !== -1 && indexB !== -1) {
+      return indexA - indexB;
+    }
+    if (indexA !== -1) return -1;
+    if (indexB !== -1) return 1;
+    return getCategoryLabel(a).localeCompare(getCategoryLabel(b), "vi");
+  });
 
   return (
     <header className="bg-white shadow-sm">
@@ -28,6 +36,12 @@ export function Header() {
               {getCategoryLabel(category)}
             </Link>
           ))}
+          <Link
+            href="/lien-he"
+            className="rounded-md px-3 py-2 text-slate-600 transition hover:bg-slate-100 hover:text-brand"
+          >
+            Liên hệ
+          </Link>
           <Link
             href="/admin"
             className="rounded-md border border-brand px-3 py-2 text-brand transition hover:bg-brand hover:text-white"

@@ -15,7 +15,7 @@ export const metadata: Metadata = {
     template: `%s | ${siteConfig.name}`,
   },
   description: siteConfig.description,
-  keywords: ["AI", "chiến lược sản phẩm", "nghiên cứu", "HōcAI"],
+  keywords: ["sỏi thận", "suy thận", "viêm cầu thận", "đau khớp", "chăm sóc thận"],
   openGraph: {
     type: "website",
     url: siteConfig.url,

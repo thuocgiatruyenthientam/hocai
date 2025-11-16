@@ -1,6 +1,6 @@
-# HōcAI Journal Web Stack
+# HōcAI Chăm Sóc Thận Web Stack
 
-This repository hosts a modern [Next.js](https://nextjs.org/) application scaffolded with TypeScript, the App Router, and Tailwind CSS. It includes dynamic category and article routes, SEO metadata, RSS + sitemap feeds, and reusable components for publishing editorial content.
+This repository hosts a modern [Next.js](https://nextjs.org/) application scaffolded with TypeScript, the App Router, and Tailwind CSS. Nó cung cấp giao diện tiếng Việt cho các chuyên mục Sỏi thận, Suy thận, Viêm cầu thận, Đau khớp cùng trang Liên hệ để bệnh nhân kết nối bác sĩ.
 
 ## Prerequisites
 
@@ -34,6 +34,11 @@ The project exposes the following npm scripts:
 ## Testing & quality
 
 Tailwind CSS powers the responsive layout. Components and routes use semantic HTML and embed schema.org JSON-LD data for SEO. The sitemap, RSS feed, and robots directives are generated via Next.js route handlers so that search engines receive up-to-date metadata for each article.
+
+## Chuyên mục & Liên hệ
+
+- Các chuyên mục **Sỏi thận**, **Suy thận**, **Viêm cầu thận** và **Đau khớp** lấy dữ liệu mô phỏng từ `src/lib/articles.ts`, hiển thị ở trang chủ, trang danh mục (`/[category]`) và trang bài viết (`/[category]/[slug]`).
+- Trang **Liên hệ** (`/lien-he`) cung cấp JSON-LD `MedicalOrganization`, thẻ meta đầy đủ cùng biểu mẫu thu thập thông tin triệu chứng để đội ngũ bác sĩ phản hồi.
 
 ## Hiệu năng & cấu hình máy chủ chạy nhanh
 

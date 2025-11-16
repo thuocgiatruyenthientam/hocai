@@ -12,7 +12,7 @@ export default function HomePage() {
     "@type": "CollectionPage",
     name: siteConfig.name,
     description: siteConfig.description,
-    about: "Trí tuệ nhân tạo và chiến lược sản phẩm",
+    about: "Sức khỏe thận và xương khớp",
     hasPart: articles.map((article) => ({
       "@type": "Article",
       headline: article.title,
@@ -25,11 +25,11 @@ export default function HomePage() {
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }} />
       <header className="space-y-4 text-center">
         <h1 className="text-4xl font-bold text-slate-900 sm:text-5xl">
-          Chiến lược tinh gọn cho sản phẩm AI thấu hiểu con người
+          Trung tâm kiến thức về sỏi thận, suy thận và đau khớp
         </h1>
         <p className="mx-auto max-w-2xl text-lg text-slate-600">
-          Khám phá các nghiên cứu và ghi chú sản phẩm mới nhất của chúng tôi về việc xây dựng trải nghiệm AI
-          thúc đẩy mức độ chấp nhận và hiệu quả kinh doanh có thể đo lường.
+          HōcAI tuyển chọn bài viết từ bác sĩ chuyên khoa để giúp bạn hiểu bệnh, xây dựng chế độ ăn uống – luyện tập an toàn và
+          chuẩn bị cho từng lần tái khám tại các chuyên mục Sỏi thận, Suy thận, Viêm cầu thận và Đau khớp.
         </p>
       </header>
       <div className="grid gap-6 md:grid-cols-2">

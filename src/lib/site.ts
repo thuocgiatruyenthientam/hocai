@@ -1,7 +1,7 @@
 export const siteConfig = {
-  name: "Tạp chí HōcAI",
+  name: "HōcAI Chăm Sóc Thận",
   description:
-    "Bản tin chiến lược hàng tuần về cách xây dựng sản phẩm AI nhân văn từ đội ngũ HōcAI.",
+    "Cẩm nang chuyên sâu về bệnh thận và xương khớp bằng tiếng Việt, cập nhật khuyến nghị điều trị và phòng ngừa chuẩn y khoa.",
   url:
     process.env.NEXT_PUBLIC_SITE_URL?.replace(/\/$/, "") ?? "https://hocai.site",
   language: "vi-VN",

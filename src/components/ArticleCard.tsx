@@ -1,6 +1,6 @@
 import Link from "next/link";
 import { Article, getCategoryLabel } from "@/lib/articles";
-import { absoluteUrl } from "@/lib/site";
+import { absoluteUrl, siteConfig } from "@/lib/site";
 
 export type ArticleCardProps = {
   article: Article;
@@ -19,7 +19,7 @@ export function ArticleCard({ article }: ArticleCardProps) {
     },
     publisher: {
       "@type": "Organization",
-      name: "Tạp chí HōcAI",
+      name: siteConfig.name,
     },
     keywords: article.tags.join(", "),
     mainEntityOfPage: {

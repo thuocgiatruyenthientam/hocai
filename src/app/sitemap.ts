@@ -24,6 +24,12 @@ export default function sitemap(): MetadataRoute.Sitemap {
       changeFrequency: "weekly",
       priority: 1,
     },
+    {
+      url: absoluteUrl("/hosting"),
+      lastModified: new Date().toISOString(),
+      changeFrequency: "monthly",
+      priority: 0.6,
+    },
     ...categoryEntries,
     ...articleEntries,
   ];

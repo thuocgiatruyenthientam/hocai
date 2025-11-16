@@ -43,3 +43,16 @@ Tailwind CSS powers the responsive layout. Components and routes use semantic HT
 4. Deploy the generated `.next` output using your hosting provider (e.g., Vercel, Netlify, Render). For static export, configure an appropriate adapter or use Vercel for optimal support.
 
 Environment variables can be added via `.env.local` for per-environment configuration if needed. Set `NEXT_PUBLIC_SITE_URL` to the fully qualified production domain (for example, `https://magazine.hocai.vn`) so sitemap, RSS, robots, and metadata endpoints emit the correct absolute URLs.
+
+### Thư mục cần tạo trên hosting
+
+Khi triển khai lên VPS hoặc hosting truyền thống, bạn có thể chuẩn bị các thư mục sau để script CI/CD hoạt động ổn định:
+
+| Đường dẫn | Công dụng | Lệnh gợi ý |
+| --- | --- | --- |
+| `/var/www/hocai` | Thư mục gốc chứa toàn bộ mã nguồn Next.js. | `mkdir -p /var/www/hocai` |
+| `/var/www/hocai/.next` | Nơi lưu build production sau `npm run build`. | `mkdir -p /var/www/hocai/.next` |
+| `/var/www/hocai/public` | Chứa tài nguyên tĩnh phục vụ trực tiếp. | `mkdir -p /var/www/hocai/public` |
+| `/var/www/hocai/storage/logs` | Tách log vận hành để dễ theo dõi. | `mkdir -p /var/www/hocai/storage/logs` |
+
+Bạn cũng có thể tham khảo trang `/hosting` trên ứng dụng để xem bảng tổng hợp này cùng JSON-LD hướng dẫn từng bước.

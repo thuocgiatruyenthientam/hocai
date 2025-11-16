@@ -15,6 +15,9 @@ export function Footer() {
           <a href="/robots.txt" className="hover:underline">
             Robots.txt
           </a>
+          <a href="/hosting" className="hover:underline">
+            Hướng dẫn hosting
+          </a>
         </nav>
       </div>
     </footer>

@@ -2,6 +2,9 @@ import type { MetadataRoute } from "next";
 import { getAllArticles, getCategories } from "@/lib/articles";
 import { absoluteUrl, siteConfig } from "@/lib/site";
 
+export const revalidate = 3600;
+export const dynamic = "force-static";
+
 export default function sitemap(): MetadataRoute.Sitemap {
   const categoryEntries = getCategories().map((category) => ({
     url: absoluteUrl(`/${category}`),

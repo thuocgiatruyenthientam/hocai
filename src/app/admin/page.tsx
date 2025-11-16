@@ -2,6 +2,9 @@ import type { Metadata } from "next";
 import { seoAuditModules, seoPrinciples, seoTools } from "@/lib/admin";
 import { absoluteUrl, siteConfig } from "@/lib/site";
 
+export const dynamic = "force-static";
+export const revalidate = 3600;
+
 const pageTitle = "Bảng điều khiển quản trị SEO";
 const pageDescription =
   "Giao diện quản trị chuẩn Google.com.vn giúp đội HōcAI theo dõi kỹ thuật, nội dung và dữ liệu có cấu trúc trong một nơi.";

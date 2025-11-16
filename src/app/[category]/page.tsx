@@ -4,6 +4,9 @@ import { ArticleCard } from "@/components/ArticleCard";
 import { getArticlesByCategory, getCategories, getCategoryLabel } from "@/lib/articles";
 import { absoluteUrl, siteConfig } from "@/lib/site";
 
+export const dynamic = "force-static";
+export const revalidate = 600;
+
 export function generateStaticParams() {
   return getCategories().map((category) => ({ category }));
 }

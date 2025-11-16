@@ -1,6 +1,9 @@
 import { getAllArticles } from "@/lib/articles";
 import { absoluteUrl, siteConfig } from "@/lib/site";
 
+export const runtime = "edge";
+export const revalidate = 3600;
+
 export function GET() {
   const items = getAllArticles()
     .sort(

@@ -2,6 +2,9 @@ import type { Metadata } from "next";
 import { hostingDirectories, hostingNotes } from "@/lib/hosting";
 import { absoluteUrl } from "@/lib/site";
 
+export const dynamic = "force-static";
+export const revalidate = 3600;
+
 const pageTitle = "Thư mục cần chuẩn bị trên hosting";
 const pageDescription =
   "Danh sách thư mục và quyền cần thiết để triển khai HōcAI Journal trên môi trường hosting hoặc VPS.";

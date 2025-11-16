@@ -35,6 +35,22 @@ The project exposes the following npm scripts:
 
 Tailwind CSS powers the responsive layout. Components and routes use semantic HTML and embed schema.org JSON-LD data for SEO. The sitemap, RSS feed, and robots directives are generated via Next.js route handlers so that search engines receive up-to-date metadata for each article.
 
+## Hiệu năng & cấu hình máy chủ chạy nhanh
+
+- `next.config.mjs` bật `swcMinify`, `compress`, tắt `X-Powered-By`, và build ở chế độ `standalone` để có thể deploy gọn trên bất kỳ máy chủ Node.js 18+ nào.
+- Tất cả route động (`/`, `/admin`, `/hosting`, `/[category]/[slug]`, sitemap, robots, RSS) khai báo `dynamic = "force-static"` hoặc `revalidate` để Next.js kết xuất trước và cache lại 10 phút/1 giờ tùy trường hợp.
+- Các asset dưới `/_next/static` được phục vụ với `Cache-Control: public, max-age=31536000, immutable` giúp CDN/Reverse proxy luôn lấy từ cache. Những route HTML khác dùng `s-maxage=600, stale-while-revalidate` để giảm TTFB.
+- `httpAgentOptions.keepAlive = true` giữ kết nối tới backend (nếu có) để hạn chế handshake TCP, trong khi `images.formats` ưu tiên AVIF/WebP cho băng thông thấp.
+
+### Khởi động sản xuất mẫu
+
+```bash
+NODE_ENV=production NEXT_PUBLIC_SITE_URL="https://magazine.hocai.vn" \
+  npm run build && PORT=3000 HOST=0.0.0.0 node .next/standalone/server.js
+```
+
+Khi chạy trên hosting truyền thống, bạn nên đặt lệnh trên vào PM2 hoặc `systemd` để tiến trình tự khởi động lại khi máy reboot. Nếu dùng Nginx/Apache làm reverse proxy, hãy bật HTTP/2 + gzip/brotli và chuyển tiếp header `Cache-Control` do Next.js phát ra để tận dụng tối đa chiến lược cache đã cấu hình.
+
 ### Giao diện quản trị SEO chuẩn Google.com.vn
 
 - Trang `/admin` cung cấp bảng điều khiển quản trị bằng tiếng Việt giúp đội nội dung đối chiếu checklist kỹ thuật, nội dung và entity theo hướng dẫn [Google Search Central](https://www.google.com.vn/search/howsearchworks).

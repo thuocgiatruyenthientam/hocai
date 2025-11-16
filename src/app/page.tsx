@@ -2,6 +2,9 @@ import { ArticleCard } from "@/components/ArticleCard";
 import { getAllArticles } from "@/lib/articles";
 import { absoluteUrl, siteConfig } from "@/lib/site";
 
+export const dynamic = "force-static";
+export const revalidate = 600;
+
 export default function HomePage() {
   const articles = getAllArticles();
   const jsonLd = {

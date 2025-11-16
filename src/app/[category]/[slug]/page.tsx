@@ -3,6 +3,9 @@ import { notFound } from "next/navigation";
 import { getAllArticles, getArticle, getCategoryLabel } from "@/lib/articles";
 import { absoluteUrl, siteConfig } from "@/lib/site";
 
+export const dynamic = "force-static";
+export const revalidate = 600;
+
 export function generateStaticParams() {
   return getAllArticles().map((article) => ({
     category: article.category,

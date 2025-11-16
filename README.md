@@ -45,7 +45,7 @@ Tailwind CSS powers the responsive layout. Components and routes use semantic HT
 ### Khởi động sản xuất mẫu
 
 ```bash
-NODE_ENV=production NEXT_PUBLIC_SITE_URL="https://magazine.hocai.vn" \
+NODE_ENV=production NEXT_PUBLIC_SITE_URL="https://hocai.site" \
   npm run build && PORT=3000 HOST=0.0.0.0 node .next/standalone/server.js
 ```
 
@@ -64,7 +64,7 @@ Khi chạy trên hosting truyền thống, bạn nên đặt lệnh trên vào P
 3. Build the application with `npm run build`.
 4. Deploy the generated `.next` output using your hosting provider (e.g., Vercel, Netlify, Render). For static export, configure an appropriate adapter or use Vercel for optimal support.
 
-Environment variables can be added via `.env.local` for per-environment configuration if needed. Set `NEXT_PUBLIC_SITE_URL` to the fully qualified production domain (for example, `https://magazine.hocai.vn`) so sitemap, RSS, robots, and metadata endpoints emit the correct absolute URLs.
+Environment variables can be added via `.env.local` for per-environment configuration if needed. Set `NEXT_PUBLIC_SITE_URL` to the fully qualified production domain (sử dụng `https://hocai.site` trong môi trường thật) để sitemap, RSS, robots và metadata xuất ra URL tuyệt đối chính xác.
 
 ### Thư mục cần tạo trên hosting
 

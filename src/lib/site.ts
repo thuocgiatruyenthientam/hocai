@@ -3,7 +3,7 @@ export const siteConfig = {
   description:
     "Bản tin chiến lược hàng tuần về cách xây dựng sản phẩm AI nhân văn từ đội ngũ HōcAI.",
   url:
-    process.env.NEXT_PUBLIC_SITE_URL?.replace(/\/$/, "") ?? "http://localhost:3000",
+    process.env.NEXT_PUBLIC_SITE_URL?.replace(/\/$/, "") ?? "https://hocai.site",
   language: "vi-VN",
   social: {
     twitter: "@hocai",

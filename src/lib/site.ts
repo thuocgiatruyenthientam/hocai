@@ -1,5 +1,5 @@
 export const siteConfig = {
-  name: "Thuốc Nam Thiên Tân - thuốc từ cây cỏ thiên nhiên, bài thuốc truyền thống của dân tộc Chăm",
+  name: "Thuốc Nam Thiên Tâm - thuốc từ cây cỏ thiên nhiên, bài thuốc truyền thống của dân tộc Chăm",
   description:
     "Kiến thức chuyên sâu về dược liệu dân tộc Chăm, kết hợp liệu trình y học hiện đại cho sỏi thận, suy thận, viêm cầu thận và đau khớp.",
   url:

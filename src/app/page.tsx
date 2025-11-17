@@ -25,10 +25,10 @@ export default function HomePage() {
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }} />
       <header className="space-y-4 text-center">
         <h1 className="text-4xl font-bold text-slate-900 sm:text-5xl">
-          Thuốc Nam Thiên Tân – thuốc từ cây cỏ thiên nhiên của người Chăm
+          Thuốc Nam Thiên Tâm - thuốc từ cây cỏ thiên nhiên, bài thuốc truyền thống của dân tộc Chăm
         </h1>
         <p className="mx-auto max-w-2xl text-lg text-slate-600">
-          Đội ngũ Thuốc Nam Thiên Tân phối hợp bác sĩ chuyên khoa để gìn giữ bài thuốc dân tộc Chăm, kết hợp y học hiện đại giúp
+          Đội ngũ Thuốc Nam Thiên Tâm phối hợp bác sĩ chuyên khoa để gìn giữ bài thuốc dân tộc Chăm, kết hợp y học hiện đại giúp
           bạn hiểu bệnh, điều chỉnh chế độ ăn uống – luyện tập và chuẩn bị cho từng lần tái khám ở các chuyên mục Sỏi thận, Suy
           thận, Viêm cầu thận và Đau khớp.
         </p>

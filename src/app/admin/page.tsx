@@ -7,7 +7,7 @@ export const revalidate = 3600;
 
 const pageTitle = "Bảng điều khiển quản trị SEO";
 const pageDescription =
-  "Giao diện quản trị chuẩn Google.com.vn giúp đội Thuốc Nam Thiên Tân theo dõi kỹ thuật, nội dung và dữ liệu có cấu trúc trong một nơi.";
+  "Giao diện quản trị chuẩn Google.com.vn giúp đội Thuốc Nam Thiên Tâm theo dõi kỹ thuật, nội dung và dữ liệu có cấu trúc trong một nơi.";
 
 export const metadata: Metadata = {
   title: pageTitle,
@@ -73,7 +73,7 @@ export default function AdminSeoPage() {
     "@type": "HowTo",
     name: "Quy trình quản trị SEO toàn diện",
     description:
-      "Các bước đảm bảo trang Thuốc Nam Thiên Tân đạt chuẩn Google Search Central cho người dùng google.com.vn.",
+      "Các bước đảm bảo trang Thuốc Nam Thiên Tâm đạt chuẩn Google Search Central cho người dùng google.com.vn.",
     step: seoAuditModules.map((module, index) => ({
       "@type": "HowToStep",
       position: index + 1,

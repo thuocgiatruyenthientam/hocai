@@ -1,4 +1,4 @@
--- Thuốc Nam Thiên Tân MySQL schema
+-- Thuốc Nam Thiên Tâm MySQL schema
 -- Môi trường: DA PMA SignOn
 -- Database: h51ecb951c_hocai
 -- Người dùng: h51ecb951c_hocai / phat2009

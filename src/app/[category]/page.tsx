@@ -25,7 +25,7 @@ export function generateMetadata({ params }: CategoryPageProps): Metadata {
 
   const readableCategory = getCategoryLabel(category);
   const pageTitle = `Chuyên mục ${readableCategory}`;
-  const description = `Bài viết cập nhật về ${readableCategory.toLowerCase()} do đội Thuốc Nam Thiên Tân tổng hợp để bạn kết hợp bài thuốc dân tộc với hướng dẫn y khoa.`;
+  const description = `Bài viết cập nhật về ${readableCategory.toLowerCase()} do đội Thuốc Nam Thiên Tâm tổng hợp để bạn kết hợp bài thuốc dân tộc với hướng dẫn y khoa.`;
   const canonical = absoluteUrl(`/${category}`);
 
   return {

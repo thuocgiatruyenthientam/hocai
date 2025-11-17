@@ -7,7 +7,7 @@ export const revalidate = 3600;
 
 const pageTitle = "Thư mục cần chuẩn bị trên hosting";
 const pageDescription =
-  "Danh sách thư mục và quyền cần thiết để triển khai Thuốc Nam Thiên Tân trên môi trường hosting hoặc VPS.";
+  "Danh sách thư mục và quyền cần thiết để triển khai Thuốc Nam Thiên Tâm trên môi trường hosting hoặc VPS.";
 
 export const metadata: Metadata = {
   title: pageTitle,

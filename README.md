@@ -1,6 +1,6 @@
-# Thuốc Nam Thiên Tân – thuốc từ cây cỏ thiên nhiên
+# Thuốc Nam Thiên Tâm - thuốc từ cây cỏ thiên nhiên, bài thuốc truyền thống của dân tộc Chăm
 
-This repository hosts a modern [Next.js](https://nextjs.org/) application scaffolded with TypeScript, the App Router, and Tailwind CSS. Giao diện tiếng Việt xoay quanh thương hiệu **Thuốc Nam Thiên Tân** – bài thuốc truyền thống của dân tộc Chăm – với các chuyên mục Sỏi thận, Suy thận, Viêm cầu thận, Đau khớp cùng trang Liên hệ để kết nối lương y/bác sĩ.
+This repository hosts a modern [Next.js](https://nextjs.org/) application scaffolded with TypeScript, the App Router, and Tailwind CSS. Giao diện tiếng Việt xoay quanh thương hiệu **Thuốc Nam Thiên Tâm** – bài thuốc truyền thống của dân tộc Chăm – với các chuyên mục Sỏi thận, Suy thận, Viêm cầu thận, Đau khớp cùng trang Liên hệ để kết nối lương y/bác sĩ.
 
 ## Prerequisites
 

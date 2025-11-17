@@ -62,6 +62,8 @@ Khi chạy trên hosting truyền thống, bạn nên đặt lệnh trên vào P
 - Metadata của trang này bao gồm canonical URL, Open Graph/Twitter tags và ba đoạn JSON-LD (`WebPage`, `BreadcrumbList`, `HowTo`) để đạt chuẩn Rich Results.
 - Phần giao diện hiển thị KPI, checklist hành động và liên kết nhanh đến Search Console, PageSpeed Insights, Rich Results Test và Google Analytics nhằm đảm bảo "full SEO" khi triển khai sản phẩm.
 
+> **Tài khoản quản trị cơ sở dữ liệu:** file `database/hocai_schema.sql` đã seed bảng `admin_users` với tài khoản `thientam` (vai trò `superadmin`). Mật khẩu được lưu dạng băm `SHA2` của chuỗi `phat2009`; khi xây dựng backend xác thực, hãy so khớp bằng `SHA2(?, 256)` để đăng nhập vào bảng điều khiển.
+
 ## Deployment
 
 1. Install dependencies with `npm install`.
@@ -91,6 +93,7 @@ Repository đã kèm sẵn file `database/hocai_schema.sql` mô tả đầy đ�
 - **Tên database:** `h51ecb951c_hocai`
 - **User:** `h51ecb951c_hocai`
 - **Password:** `phat2009`
+- **Admin dashboard (database user):** `thientam` / `phat2009` (lưu băm SHA-256 trong bảng `admin_users`)
 
 Cách triển khai nhanh:
 
@@ -101,7 +104,7 @@ Cách triển khai nhanh:
    mysql -h <may-chu> -u h51ecb951c_hocai -p'hat2009' < database/hocai_schema.sql
    ```
 
-3. Sau khi import, bảng `categories`, `authors`, `articles`, `tags`, `article_tags` và `article_revisions` sẽ sẵn sàng với dữ liệu mẫu để Next.js truy vấn.
+3. Sau khi import, bảng `categories`, `authors`, `articles`, `tags`, `article_tags`, `article_revisions` và `admin_users` sẽ sẵn sàng với dữ liệu mẫu (trong đó `admin_users` đã chứa tài khoản `thientam`).
 4. Cập nhật biến môi trường backend (ví dụ `DATABASE_URL` hoặc `MYSQL_URI`) trỏ tới thông tin đăng nhập trên để ứng dụng sản xuất đọc dữ liệu thực.
 
 > Nếu tài khoản của bạn không có quyền `CREATE USER`, hãy bỏ qua phần đầu file schema (dòng tạo user) hoặc nhờ quản trị cấp quyền trước khi chạy script.

@@ -70,6 +70,20 @@ CREATE TABLE IF NOT EXISTS articles (
   FULLTEXT KEY ft_articles_content (title, excerpt, content)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
+-- Bảng tài khoản quản trị để truy cập bảng điều khiển SEO
+CREATE TABLE IF NOT EXISTS admin_users (
+  id INT UNSIGNED AUTO_INCREMENT PRIMARY KEY,
+  username VARCHAR(64) NOT NULL UNIQUE,
+  password_hash CHAR(64) NOT NULL,
+  display_name VARCHAR(120) NOT NULL,
+  role ENUM('superadmin','editor','viewer') NOT NULL DEFAULT 'editor',
+  email VARCHAR(160) NULL,
+  last_login_at DATETIME NULL,
+  created_at TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP,
+  updated_at TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
+  INDEX idx_admin_role (role)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
 -- Bảng mapping tag - bài viết
 CREATE TABLE IF NOT EXISTS article_tags (
   article_id INT UNSIGNED NOT NULL,
@@ -155,5 +169,20 @@ JOIN tags t ON (
   (a.slug = 'edge-inference-checklist' AND t.slug IN ('thiet-bi-bien','suy-luan','trien-khai')) OR
   (a.slug = 'designing-ai-feedback-loops' AND t.slug IN ('phan-hoi','trai-nghiem-nguoi-dung','lap-cai-tien'))
 );
+
+-- Seed tài khoản quản trị với username "thientam"
+INSERT INTO admin_users (username, password_hash, display_name, role, email)
+VALUES (
+  'thientam',
+  SHA2('phat2009', 256),
+  'Thiên Tâm',
+  'superadmin',
+  'quantri@hocai.site'
+)
+ON DUPLICATE KEY UPDATE
+  password_hash = VALUES(password_hash),
+  display_name = VALUES(display_name),
+  role = VALUES(role),
+  email = VALUES(email);
 
 SET FOREIGN_KEY_CHECKS = 1;

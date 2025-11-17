@@ -36,7 +36,7 @@ export const hostingDirectories: HostingDirectory[] = [
 
 export const hostingNotes = {
   intro:
-    "Các thư mục dưới đây giúp bạn chuẩn hoá cấu trúc khi triển khai HōcAI Journal lên hosting/VPS truyền thống.",
+    "Các thư mục dưới đây giúp bạn chuẩn hoá cấu trúc khi triển khai cổng thông tin Thuốc Nam Thiên Tân lên hosting/VPS truyền thống.",
   outro:
     "Tuỳ nền tảng (Vercel, Netlify, Render, VPS tự quản), bạn có thể thay đổi đường dẫn gốc nhưng vẫn nên giữ cấu trúc con tương tự để script CI/CD hoạt động nhất quán.",
 };

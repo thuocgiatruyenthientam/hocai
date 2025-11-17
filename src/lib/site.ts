@@ -1,7 +1,7 @@
 export const siteConfig = {
-  name: "HōcAI Chăm Sóc Thận",
+  name: "Thuốc Nam Thiên Tân - thuốc từ cây cỏ thiên nhiên, bài thuốc truyền thống của dân tộc Chăm",
   description:
-    "Cẩm nang chuyên sâu về bệnh thận và xương khớp bằng tiếng Việt, cập nhật khuyến nghị điều trị và phòng ngừa chuẩn y khoa.",
+    "Kiến thức chuyên sâu về dược liệu dân tộc Chăm, kết hợp liệu trình y học hiện đại cho sỏi thận, suy thận, viêm cầu thận và đau khớp.",
   url:
     process.env.NEXT_PUBLIC_SITE_URL?.replace(/\/$/, "") ?? "https://hocai.site",
   language: "vi-VN",

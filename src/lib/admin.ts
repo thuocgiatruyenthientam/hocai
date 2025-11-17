@@ -13,7 +13,7 @@ export const seoAuditModules: SeoAuditModule[] = [
     id: "technical-health",
     title: "Sức khỏe kỹ thuật",
     description:
-      "Đảm bảo Googlebot có thể thu thập dữ liệu (crawl) và lập chỉ mục mọi phần tử quan trọng của sản phẩm HōcAI.",
+      "Đảm bảo Googlebot có thể thu thập dữ liệu (crawl) và lập chỉ mục mọi phần tử quan trọng của nền tảng Thuốc Nam Thiên Tân.",
     objective:
       "Kiểm soát Core Web Vitals, trạng thái máy chủ và sơ đồ trang theo chuẩn tài liệu Google Search Central.",
     kpis: [
@@ -51,7 +51,7 @@ export const seoAuditModules: SeoAuditModule[] = [
     id: "entity-knowledge",
     title: "Nhận diện thương hiệu & thực thể",
     description:
-      "Duy trì tính thống nhất của dữ liệu có cấu trúc để Google hiểu rõ tổ chức HōcAI và các tác giả.",
+      "Duy trì tính thống nhất của dữ liệu có cấu trúc để Google hiểu rõ tổ chức Thuốc Nam Thiên Tân và các lương y/bác sĩ.",
     objective:
       "Cung cấp dữ liệu Organization, Person, WebSite đồng nhất giữa trang chủ, RSS và trang quản trị.",
     kpis: [

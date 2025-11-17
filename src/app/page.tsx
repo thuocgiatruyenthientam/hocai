@@ -25,11 +25,12 @@ export default function HomePage() {
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }} />
       <header className="space-y-4 text-center">
         <h1 className="text-4xl font-bold text-slate-900 sm:text-5xl">
-          Trung tâm kiến thức về sỏi thận, suy thận và đau khớp
+          Thuốc Nam Thiên Tân – thuốc từ cây cỏ thiên nhiên của người Chăm
         </h1>
         <p className="mx-auto max-w-2xl text-lg text-slate-600">
-          HōcAI tuyển chọn bài viết từ bác sĩ chuyên khoa để giúp bạn hiểu bệnh, xây dựng chế độ ăn uống – luyện tập an toàn và
-          chuẩn bị cho từng lần tái khám tại các chuyên mục Sỏi thận, Suy thận, Viêm cầu thận và Đau khớp.
+          Đội ngũ Thuốc Nam Thiên Tân phối hợp bác sĩ chuyên khoa để gìn giữ bài thuốc dân tộc Chăm, kết hợp y học hiện đại giúp
+          bạn hiểu bệnh, điều chỉnh chế độ ăn uống – luyện tập và chuẩn bị cho từng lần tái khám ở các chuyên mục Sỏi thận, Suy
+          thận, Viêm cầu thận và Đau khớp.
         </p>
       </header>
       <div className="grid gap-6 md:grid-cols-2">

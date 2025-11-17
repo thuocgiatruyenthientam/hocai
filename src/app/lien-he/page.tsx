@@ -7,22 +7,22 @@ export const revalidate = 3600;
 export const metadata: Metadata = {
   title: "Liên hệ chuyên gia",
   description:
-    "Kết nối với HōcAI Chăm Sóc Thận để đặt lịch tư vấn sỏi thận, suy thận, viêm cầu thận và đau khớp qua hotline, email hoặc phòng khám.",
+    "Kết nối với Thuốc Nam Thiên Tân để đặt lịch tư vấn các bài thuốc dân tộc Chăm hỗ trợ sỏi thận, suy thận, viêm cầu thận và đau khớp qua hotline, email hoặc phòng khám.",
   alternates: {
     canonical: absoluteUrl("/lien-he"),
   },
   openGraph: {
-    title: "Liên hệ HōcAI Chăm Sóc Thận",
+    title: "Liên hệ Thuốc Nam Thiên Tân",
     description:
-      "Đặt lịch tư vấn bệnh thận và xương khớp với đội ngũ bác sĩ hợp tác của HōcAI qua điện thoại, email hoặc phòng khám.",
+      "Đặt lịch tư vấn bài thuốc dân tộc Chăm kết hợp y học hiện đại với đội ngũ lương y và bác sĩ cộng tác của Thuốc Nam Thiên Tân.",
     url: absoluteUrl("/lien-he"),
     siteName: siteConfig.name,
   },
   twitter: {
     card: "summary",
-    title: "Liên hệ bác sĩ HōcAI",
+    title: "Liên hệ Thuốc Nam Thiên Tân",
     description:
-      "Nhận tư vấn điều trị sỏi thận, suy thận, viêm cầu thận, đau khớp từ chuyên gia bằng cách gửi biểu mẫu hoặc gọi hotline.",
+      "Nhận tư vấn các liệu trình sỏi thận, suy thận, viêm cầu thận, đau khớp bằng bài thuốc tự nhiên khi gửi biểu mẫu hoặc gọi hotline.",
   },
 };
 
@@ -38,7 +38,7 @@ const contactChannels = [
     description: "Nhận tư vấn kế hoạch dinh dưỡng, xét nghiệm và kết quả tái khám qua email.",
   },
   {
-    label: "Phòng khám HōcAI Care",
+    label: "Phòng khám Thuốc Nam Thiên Tân",
     value: "Tầng 8, 120 Trần Hưng Đạo, Quận 1, TP.HCM",
     description: "Tiếp nhận bệnh nhân vào 8h00–17h00 (thứ Hai – Bảy). Có dịch vụ lọc máu ban ngày.",
   },
@@ -81,7 +81,7 @@ export default function ContactPage() {
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(contactJsonLd) }} />
       <header className="space-y-4 text-center">
         <p className="text-xs uppercase tracking-[0.3em] text-brand">Liên hệ</p>
-        <h1 className="text-4xl font-semibold text-slate-900">Kết nối với bác sĩ HōcAI</h1>
+        <h1 className="text-4xl font-semibold text-slate-900">Kết nối với chuyên gia Thuốc Nam Thiên Tân</h1>
         <p className="text-slate-600">
           Vui lòng chọn kênh phù hợp để đặt lịch tư vấn về sỏi thận, suy thận, viêm cầu thận hoặc đau khớp. Đội ngũ hỗ trợ sẽ phản
           hồi trong vòng 2 giờ làm việc.
@@ -157,7 +157,7 @@ export default function ContactPage() {
           Gửi yêu cầu tư vấn
         </button>
         <p className="text-center text-xs text-slate-500">
-          Bằng việc gửi biểu mẫu, bạn đồng ý để HōcAI liên hệ qua điện thoại/email trong giờ hành chính.
+          Bằng việc gửi biểu mẫu, bạn đồng ý để Thuốc Nam Thiên Tân liên hệ qua điện thoại/email trong giờ hành chính.
         </p>
       </form>
     </section>

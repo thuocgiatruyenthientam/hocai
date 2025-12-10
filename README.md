@@ -108,3 +108,32 @@ Cách triển khai nhanh:
 4. Cập nhật biến môi trường backend (ví dụ `DATABASE_URL` hoặc `MYSQL_URI`) trỏ tới thông tin đăng nhập trên để ứng dụng sản xuất đọc dữ liệu thực.
 
 > Nếu tài khoản của bạn không có quyền `CREATE USER`, hãy bỏ qua phần đầu file schema (dòng tạo user) hoặc nhờ quản trị cấp quyền trước khi chạy script.
+
+### Kịch bản deploy lên DirectAdmin (cda004.secureweb.vn:2222)
+
+Repository cung cấp script `scripts/deploy-trang-thuoc-nam.sh` để build + đóng gói Next.js ở chế độ `standalone` rồi upload qua SSH/SFTP tới bảng điều khiển DirectAdmin (Evolution) cổng **2222**.
+
+1. Đặt biến môi trường tối thiểu `DA_USER` (tài khoản SSH/SFTP DirectAdmin) và chạy script:
+
+   ```bash
+   DA_USER=<tai-khoan-da> ./scripts/deploy-trang-thuoc-nam.sh
+   ```
+
+   - `DA_HOST` (mặc định `cda004.secureweb.vn`) và `DA_PORT` (mặc định `2222`) có thể tuỳ chỉnh khi hosting đổi cổng.
+   - `DA_TARGET` mặc định `~/domains/trang-thuoc-nam/public_html/node` – thư mục chứa build trên hosting. Điều chỉnh nếu domain/subdomain khác.
+   - `NEXT_PUBLIC_SITE_URL` mặc định `https://trang-thuoc-nam.vn`; đổi để metadata, sitemap, RSS xuất đúng domain thực tế.
+
+2. Script tự động:
+
+   - Chạy `npm install` và `npm run build` (đặt `NEXT_PUBLIC_SITE_URL` theo biến môi trường).
+   - Đóng gói `.next/standalone`, `.next/static`, `public` cùng file `start.sh` vào `release-trang-thuoc-nam.tar.gz`.
+   - Upload và giải nén bundle vào `DA_TARGET`, cấp quyền thực thi cho `start.sh`.
+
+3. Đăng nhập SSH vào hosting, chạy `start.sh` hoặc thêm vào PM2/systemd để khởi động server Node.js:
+
+   ```bash
+   cd ~/domains/trang-thuoc-nam/public_html/node
+   PORT=3000 NEXT_PUBLIC_SITE_URL="https://trang-thuoc-nam.vn" ./start.sh
+   ```
+
+> Lưu ý: hosting phải bật SSH/SFTP và cho phép chạy Node.js 18+. Nếu không có quyền SSH, bạn vẫn có thể lấy file `release-trang-thuoc-nam.tar.gz` sinh ra ở bước build và upload thủ công qua File Manager của DirectAdmin.

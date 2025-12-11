@@ -1,0 +1,95 @@
+:root {
+  --green-primary: #0f7b4d;
+  --green-light: #e8f5ef;
+}
+
+body {
+  font-family: 'Inter', system-ui, -apple-system, sans-serif;
+  line-height: 1.6;
+}
+
+.navbar-brand {
+  letter-spacing: 0.4px;
+}
+
+.card h3, .card h2, .card h5 {
+  color: var(--green-primary);
+}
+
+.hero-intro h1 {
+  font-size: clamp(1.8rem, 2.5vw + 1rem, 2.8rem);
+}
+
+.hero-intro p {
+  font-size: 1rem;
+  color: #4a5568;
+}
+
+.feature-bullets li {
+  padding-left: 0.25rem;
+}
+
+.bg-success-subtle {
+  background-color: var(--green-light) !important;
+}
+
+a {
+  text-decoration: none;
+}
+
+a:hover {
+  text-decoration: underline;
+}
+
+.btn-success,
+.btn-outline-success:hover,
+.navbar-dark .navbar-nav .nav-link.active {
+  background-color: var(--green-primary);
+  border-color: var(--green-primary);
+}
+
+.btn-outline-success {
+  color: var(--green-primary);
+  border-color: var(--green-primary);
+}
+
+.section-header {
+  gap: 0.75rem;
+  flex-wrap: wrap;
+}
+
+.section-header .btn-link {
+  padding-left: 0;
+  color: var(--green-primary);
+}
+
+.card-grid {
+  display: grid;
+  gap: 1rem;
+}
+
+.card-grid.two-col {
+  grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+}
+
+.card-grid.three-col {
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+}
+
+@media (max-width: 575px) {
+  .navbar-brand {
+    font-size: 1rem;
+  }
+
+  .card {
+    border-radius: 0.75rem;
+  }
+
+  .card-body {
+    padding: 1.1rem;
+  }
+}
+
+footer {
+  margin-top: auto;
+}

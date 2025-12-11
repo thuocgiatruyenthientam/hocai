@@ -1,0 +1,117 @@
+<!doctype html>
+<html lang="vi">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="robots" content="index,follow">
+  <meta name="theme-color" content="#0f7b4d">
+  <title>{{ meta.title if meta else site_name }}</title>
+  <meta name="description" content="{{ meta.description if meta else 'Thuốc nam gia truyền chăm sóc thận, khớp và làn da khỏe đẹp.' }}">
+  {% if meta and meta.canonical %}<link rel="canonical" href="{{ meta.canonical }}">{% endif %}
+  <meta property="og:type" content="website">
+  <meta property="og:title" content="{{ meta.title if meta else site_name }}">
+  <meta property="og:description" content="{{ meta.description if meta else 'Thuốc nam gia truyền chăm sóc thận, khớp và làn da khỏe đẹp.' }}">
+  <meta property="og:site_name" content="{{ site_name }}">
+  <meta property="og:locale" content="vi_VN">
+  <meta property="og:url" content="{{ meta.canonical if meta and meta.canonical else request.url }}">
+  <meta name="twitter:card" content="summary">
+  <meta name="twitter:title" content="{{ meta.title if meta else site_name }}">
+  <meta name="twitter:description" content="{{ meta.description if meta else 'Thuốc nam gia truyền chăm sóc thận, khớp và làn da khỏe đẹp.' }}">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.3/css/bootstrap.min.css" integrity="sha512-M4oP/S+uvkfg9VdA+wdG3fHtuPSnENoTTp3WgYi8UxNblE5jfxgWOr1Gi1n6oJh2raXIiQunlslqY5T2CqF0Qg==" crossorigin="anonymous" referrerpolicy="no-referrer">
+  <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+  <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "Organization",
+      "name": "{{ site_name }}",
+      "url": "{{ url_for('home', _external=True) }}",
+      "contactPoint": [
+        {
+          "@type": "ContactPoint",
+          "contactType": "customer support",
+          "telephone": "+84-900-123-456",
+          "areaServed": "VN",
+          "availableLanguage": ["vi"]
+        }
+      ]
+    }
+  </script>
+  {% if meta and meta.breadcrumbs %}
+  <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "BreadcrumbList",
+      "itemListElement": [
+        {% for crumb in meta.breadcrumbs %}
+        {
+          "@type": "ListItem",
+          "position": {{ loop.index }},
+          "name": "{{ crumb.name }}",
+          "item": "{{ crumb.url }}"
+        }{% if not loop.last %},{% endif %}
+        {% endfor %}
+      ]
+    }
+  </script>
+  {% endif %}
+</head>
+<body class="bg-light">
+<nav class="navbar navbar-expand-lg navbar-dark bg-success shadow-sm">
+  <div class="container">
+    <a class="navbar-brand fw-bold" href="{{ url_for('home') }}">{{ site_name }}</a>
+    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarNav">
+      <ul class="navbar-nav me-auto">
+        <li class="nav-item"><a class="nav-link" href="{{ url_for('home') }}">Trang chủ</a></li>
+        <li class="nav-item"><a class="nav-link" href="{{ url_for('news_list') }}">Tin tức</a></li>
+        <li class="nav-item dropdown">
+          <a class="nav-link dropdown-toggle" href="#" id="topicsDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">Chủ đề</a>
+          <ul class="dropdown-menu">
+            {% for topic in nav_topics %}
+            <li><a class="dropdown-item" href="{{ url_for('topic_detail', slug=topic.slug) }}">{{ topic.title }}</a></li>
+            {% endfor %}
+          </ul>
+        </li>
+      </ul>
+      <div class="d-flex align-items-center gap-2">
+        {% if session.get('admin') %}
+          <a class="btn btn-light btn-sm" href="{{ url_for('admin_dashboard') }}">Quản trị</a>
+          <a class="btn btn-outline-light btn-sm" href="{{ url_for('admin_logout') }}">Đăng xuất</a>
+        {% else %}
+          <a class="btn btn-outline-light btn-sm" href="{{ url_for('admin_login') }}">Đăng nhập</a>
+        {% endif %}
+      </div>
+    </div>
+  </div>
+</nav>
+
+<main class="py-4">
+  <div class="container">
+    {% with messages = get_flashed_messages(with_categories=true) %}
+      {% if messages %}
+        <div class="mb-3">
+          {% for category, message in messages %}
+            <div class="alert alert-{{ category }} alert-dismissible fade show" role="alert">
+              {{ message }}
+              <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+            </div>
+          {% endfor %}
+        </div>
+      {% endif %}
+    {% endwith %}
+    {% block content %}{% endblock %}
+  </div>
+</main>
+
+<footer class="bg-dark text-white py-4 mt-auto">
+  <div class="container text-center">
+    <p class="mb-1 fw-bold">{{ site_name }} - Thuốc gia truyền dân tộc Chăm</p>
+    <p class="mb-0 small">Tư vấn chuyên môn: 08:00 - 20:00 | Hotline: 0900 123 456</p>
+  </div>
+</footer>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.3/js/bootstrap.bundle.min.js" integrity="sha512-I6rjVnqk6IyQ3cTUaDSJPFmN2kLBXjg5eQof8I4eAbOeXtfLOcOfeUeawuO/7dBDEuDfSU/EYEYVplpXglVvjA==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+</body>
+</html>

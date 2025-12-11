@@ -1,0 +1,82 @@
+[
+  {
+    "slug": "soi-than",
+    "title": "Sỏi thận",
+    "summary": "Giải pháp thảo dược giúp giảm đau, bào mòn sỏi và hỗ trợ tiết niệu khỏe mạnh.",
+    "remedies": [
+      "Nước râu ngô, kim tiền thảo đun uống hằng ngày",
+      "Uống đủ nước kết hợp trà rễ cỏ tranh, xa tiền tử",
+      "Xoa bóp vùng hông bằng dầu thảo mộc, giữ ấm cơ thể"
+    ]
+  },
+  {
+    "slug": "viem-cau-than",
+    "title": "Viêm cầu thận",
+    "summary": "Công thức thảo dược gia truyền giảm viêm, lợi tiểu và bảo vệ chức năng lọc của thận.",
+    "remedies": [
+      "Sắc rễ cây muồng trâu, rau má, mã đề uống 2 lần/ngày",
+      "Ăn nhạt, ngủ đủ giấc, tránh rượu bia và giữ ấm thắt lưng",
+      "Xoa bóp day ấn huyệt thận du giúp lưu thông khí huyết"
+    ]
+  },
+  {
+    "slug": "suy-than",
+    "title": "Suy thận",
+    "summary": "Bồi bổ thận khí, hỗ trợ phục hồi sinh lực với thảo dược sạch từ đồng bằng và cao nguyên.",
+    "remedies": [
+      "Chè dây, hoàng kỳ, đương quy sắc uống thay nước",
+      "Chế độ ăn nhiều rau xanh, hạn chế đạm đỏ và thực phẩm chế biến",
+      "Tập thở bụng, thiền nhẹ 15 phút mỗi ngày"
+    ]
+  },
+  {
+    "slug": "viem-tiet-nieu",
+    "title": "Viêm tiết niệu",
+    "summary": "Kháng khuẩn tự nhiên, lợi tiểu và làm mát giúp tiểu tiện dễ chịu, giảm tái phát.",
+    "remedies": [
+      "Rau diếp cá, râu ngô, kim ngân hoa sắc uống",
+      "Uống đủ 2 lít nước/ngày và vệ sinh cá nhân đúng cách",
+      "Tắm lá trầu không, lá tràm dịu nhẹ để giảm ngứa rát"
+    ]
+  },
+  {
+    "slug": "lam-dep-da",
+    "title": "Làm đẹp da",
+    "summary": "Thanh lọc cơ thể, dưỡng huyết và phục hồi làn da sáng khỏe từ thảo dược Chăm.",
+    "remedies": [
+      "Uống trà atiso, trà xanh, cam thảo mỗi sáng",
+      "Đắp mặt nạ nghệ, mật ong và sữa chua 2 lần/tuần",
+      "Ngủ trước 23h, tập yoga nhẹ để giảm stress"
+    ]
+  },
+  {
+    "slug": "viem-khop",
+    "title": "Viêm khớp",
+    "summary": "Giảm đau, kháng viêm, phục hồi vận động với bài thuốc gia truyền của người Chăm.",
+    "remedies": [
+      "Ngâm chân gừng muối ấm, xoa bóp bằng dầu gió thảo mộc",
+      "Uống sắc rễ nhàu, dây đau xương, thiên niên kiện",
+      "Tập kéo giãn khớp, đi bộ nhẹ 20 phút/ngày"
+    ]
+  },
+  {
+    "slug": "thoai-hoa-khop",
+    "title": "Thoái hóa khớp",
+    "summary": "Tăng cường sụn khớp, giảm khô cứng với thảo dược ấm và bổ.",
+    "remedies": [
+      "Sắc ngải cứu, lá lốt, thiên niên kiện uống buổi tối",
+      "Chườm thảo dược rang muối nóng vào vùng khớp",
+      "Bổ sung collagen, tập bơi hoặc đạp xe nhẹ"
+    ]
+  },
+  {
+    "slug": "gout",
+    "title": "Gout",
+    "summary": "Kiểm soát acid uric, giảm sưng đau khớp với thảo dược mát và lợi tiểu.",
+    "remedies": [
+      "Trà lá tía tô, râu ngô, ké đầu ngựa uống ấm",
+      "Ăn nhiều rau xanh, giảm thịt đỏ, nội tạng và bia rượu",
+      "Chườm lạnh khớp sưng, nghỉ ngơi khi đau cấp"
+    ]
+  }
+]

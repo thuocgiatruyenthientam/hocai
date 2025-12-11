@@ -1,0 +1,67 @@
+{% extends 'base.html' %}
+{% block content %}
+<section class="mb-5 hero-intro">
+  <div class="row align-items-center gy-4">
+    <div class="col-lg-6">
+      <h1 class="fw-bold text-success mb-3">Bài thuốc nam gia truyền Thiên Tâm</h1>
+      <p class="mb-4">Đội ngũ lương y dân tộc Chăm, đồng hành cùng bạn trong hành trình chăm sóc thận, tiết niệu, xương khớp và làn da khỏe mạnh.</p>
+      <div class="d-flex flex-wrap gap-2">
+        <a class="btn btn-success" href="#topics">Khám phá chủ đề</a>
+        <a class="btn btn-outline-success" href="{{ url_for('news_list') }}">Xem tin tức</a>
+      </div>
+    </div>
+    <div class="col-lg-6">
+      <div class="card shadow-sm border-0 h-100">
+        <div class="card-body">
+          <h2 class="h5 text-success mb-3">Cam kết chất lượng</h2>
+          <ul class="list-unstyled mb-0 feature-bullets">
+            <li class="mb-2">✔️ Thảo dược sạch, thu hái tại vùng nguyên liệu chuẩn hữu cơ</li>
+            <li class="mb-2">✔️ Công thức gia truyền, phù hợp thể trạng người Việt</li>
+            <li class="mb-2">✔️ Hướng dẫn sử dụng rõ ràng, hỗ trợ tư vấn miễn phí</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="topics" class="mb-5">
+  <div class="d-flex justify-content-between align-items-center section-header mb-3">
+    <h2 class="h4 mb-0 text-success">Chủ đề nổi bật</h2>
+    <a class="btn btn-link" href="#topics">Tất cả 8 chủ đề</a>
+  </div>
+  <div class="card-grid two-col">
+    {% for topic in topics %}
+    <div>
+      <div class="card h-100 shadow-sm border-0">
+        <div class="card-body d-flex flex-column">
+          <h3 class="h5 text-success">{{ topic.title }}</h3>
+          <p class="text-muted flex-grow-1">{{ topic.summary }}</p>
+          <a class="btn btn-outline-success mt-2" href="{{ url_for('topic_detail', slug=topic.slug) }}">Xem bài thuốc</a>
+        </div>
+      </div>
+    </div>
+    {% endfor %}
+  </div>
+</section>
+
+<section class="mb-4">
+  <div class="d-flex justify-content-between align-items-center section-header mb-3">
+    <h2 class="h4 mb-0 text-success">Tin tức & kiến thức</h2>
+    <a class="btn btn-link" href="{{ url_for('news_list') }}">Xem tất cả</a>
+  </div>
+  <div class="card-grid three-col">
+    {% for item in latest_news %}
+    <div>
+      <div class="card h-100 border-0 shadow-sm">
+        <div class="card-body d-flex flex-column">
+          <h3 class="h6 text-success">{{ item.title }}</h3>
+          <p class="small text-muted flex-grow-1">{{ item.summary }}</p>
+          <a class="stretched-link" href="{{ item.url }}" target="_blank" rel="noopener">Nguồn: {{ item.source }}</a>
+        </div>
+      </div>
+    </div>
+    {% endfor %}
+  </div>
+</section>
+{% endblock %}

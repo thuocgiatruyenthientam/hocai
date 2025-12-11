@@ -1,0 +1,129 @@
+{% extends 'base.html' %}
+{% block content %}
+<div class="d-flex justify-content-between align-items-center mb-3">
+  <div>
+    <p class="text-uppercase text-success small fw-semibold mb-1">Quản trị</p>
+    <h1 class="h4 mb-0">SEO Dashboard</h1>
+    <p class="text-muted mb-0">Cập nhật nội dung, bài thuốc và tin tức để tối ưu tìm kiếm.</p>
+  </div>
+  <a class="btn btn-outline-success" href="{{ url_for('home') }}">Xem trang ngoài</a>
+</div>
+
+<div class="row g-4">
+  <div class="col-lg-6">
+    <div class="card shadow-sm border-0 h-100">
+      <div class="card-body">
+        <div class="d-flex justify-content-between align-items-center mb-3">
+          <div>
+            <p class="text-success small text-uppercase fw-semibold mb-1">Chủ đề</p>
+            <h2 class="h5 mb-0">Bài thuốc nam</h2>
+          </div>
+          <span class="badge bg-success-subtle text-success">{{ topics|length }} mục</span>
+        </div>
+        <form method="post" action="{{ url_for('admin_add_topic') }}" class="mb-4">
+          <div class="row g-2">
+            <div class="col-md-6">
+              <label class="form-label small">Tiêu đề</label>
+              <input class="form-control" name="title" required>
+            </div>
+            <div class="col-md-6">
+              <label class="form-label small">Slug (không dấu)</label>
+              <input class="form-control" name="slug" required>
+            </div>
+            <div class="col-12">
+              <label class="form-label small">Tóm tắt</label>
+              <textarea class="form-control" name="summary" rows="2"></textarea>
+            </div>
+            <div class="col-12">
+              <label class="form-label small">Các bước/thuốc (mỗi dòng một ý)</label>
+              <textarea class="form-control" name="remedies" rows="3"></textarea>
+            </div>
+          </div>
+          <button class="btn btn-success mt-3" type="submit">Thêm chủ đề</button>
+        </form>
+
+        <div class="list-group">
+          {% for topic in topics %}
+          <div class="list-group-item list-group-item-action">
+            <div class="d-flex justify-content-between align-items-center">
+              <div>
+                <h3 class="h6 mb-1">{{ topic.title }}</h3>
+                <p class="small text-muted mb-2">{{ topic.summary }}</p>
+              </div>
+              <form method="post" action="{{ url_for('admin_delete_topic', slug=topic.slug) }}" onsubmit="return confirm('Xóa chủ đề?');">
+                <button class="btn btn-outline-danger btn-sm">Xóa</button>
+              </form>
+            </div>
+            <form class="mt-2" method="post" action="{{ url_for('admin_update_topic', slug=topic.slug) }}">
+              <div class="row g-2">
+                <div class="col-md-6">
+                  <input class="form-control form-control-sm" name="title" value="{{ topic.title }}">
+                </div>
+                <div class="col-md-6">
+                  <input class="form-control form-control-sm" name="summary" value="{{ topic.summary }}">
+                </div>
+                <div class="col-12">
+                  <textarea class="form-control form-control-sm" name="remedies" rows="2">{{ topic.remedies | join('\n') }}</textarea>
+                </div>
+              </div>
+              <button class="btn btn-outline-success btn-sm mt-2" type="submit">Lưu</button>
+            </form>
+          </div>
+          {% endfor %}
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="col-lg-6">
+    <div class="card shadow-sm border-0 h-100">
+      <div class="card-body">
+        <div class="d-flex justify-content-between align-items-center mb-3">
+          <div>
+            <p class="text-success small text-uppercase fw-semibold mb-1">Tin tức</p>
+            <h2 class="h5 mb-0">Tự động chọn lọc</h2>
+          </div>
+          <span class="badge bg-success-subtle text-success">{{ news_items|length }} bài</span>
+        </div>
+        <form method="post" action="{{ url_for('admin_add_news') }}" class="mb-4">
+          <div class="row g-2">
+            <div class="col-12">
+              <label class="form-label small">Tiêu đề</label>
+              <input class="form-control" name="title" required>
+            </div>
+            <div class="col-md-6">
+              <label class="form-label small">Nguồn</label>
+              <input class="form-control" name="source">
+            </div>
+            <div class="col-md-6">
+              <label class="form-label small">Liên kết</label>
+              <input class="form-control" name="url" required>
+            </div>
+            <div class="col-12">
+              <label class="form-label small">Tóm tắt</label>
+              <textarea class="form-control" name="summary" rows="2"></textarea>
+            </div>
+          </div>
+          <button class="btn btn-success mt-3" type="submit">Thêm tin</button>
+        </form>
+
+        <div class="list-group">
+          {% for item in news_items %}
+          <div class="list-group-item list-group-item-action d-flex justify-content-between align-items-start">
+            <div class="me-3">
+              <h3 class="h6 mb-1">{{ item.title }}</h3>
+              <p class="small text-muted mb-1">Nguồn: {{ item.source }}</p>
+              <p class="small text-secondary mb-2">{{ item.summary }}</p>
+              <a class="small" href="{{ item.url }}" target="_blank" rel="noopener">Đọc liên kết</a>
+            </div>
+            <form method="post" action="{{ url_for('admin_delete_news', item_id=item.id) }}" onsubmit="return confirm('Xóa tin này?');">
+              <button class="btn btn-outline-danger btn-sm">Xóa</button>
+            </form>
+          </div>
+          {% endfor %}
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+{% endblock %}

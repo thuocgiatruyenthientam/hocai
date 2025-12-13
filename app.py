@@ -12,7 +12,8 @@ from flask_sqlalchemy import SQLAlchemy
 BASE_DIR = Path(__file__).parent
 app = Flask(__name__)
 app.config["SECRET_KEY"] = os.getenv("SECRET_KEY", "thi-en-tam-secret-key")
-app.config["ADMIN_PASSWORD"] = os.getenv("ADMIN_PASSWORD", "tientocham")
+app.config["ADMIN_USERNAME"] = os.getenv("ADMIN_USERNAME", "admin")
+app.config["ADMIN_PASSWORD"] = os.getenv("ADMIN_PASSWORD", "phat2009")
 app.config["SQLALCHEMY_DATABASE_URI"] = os.getenv(
     "DATABASE_URL",
     "mysql+pymysql://h51ecb951c_hocai:phat2009@localhost/h51ecb951c_hocai?charset=utf8mb4",
@@ -374,12 +375,16 @@ def admin_dashboard():
 @app.route("/admin/login", methods=["GET", "POST"])
 def admin_login():
     if request.method == "POST":
+        username = request.form.get("username")
         password = request.form.get("password")
-        if password == app.config["ADMIN_PASSWORD"]:
+        if (
+            username == app.config["ADMIN_USERNAME"]
+            and password == app.config["ADMIN_PASSWORD"]
+        ):
             session["admin"] = True
             flash("Đăng nhập thành công", "success")
             return redirect(url_for("admin_dashboard"))
-        flash("Mật khẩu chưa đúng", "danger")
+        flash("Sai tài khoản hoặc mật khẩu", "danger")
     return render_template("admin/login.html")
 
 

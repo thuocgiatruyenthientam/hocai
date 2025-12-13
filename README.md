@@ -10,17 +10,18 @@ Website giới thiệu cây thuốc nam và bài thuốc gia truyền của dân
 - Dữ liệu chủ đề và tin tức lưu trong MariaDB (tự tạo bảng `topics` và `news_items` khi khởi động lần đầu).
 
 ## Cài đặt
-**Cài đặt nhanh:**
+**Cài đặt nhanh (đã khớp môi trường Setup Python App 3.11.11):**
 ```bash
 chmod +x install.sh
 ./install.sh
 ```
-Script sẽ tạo `.venv`, cài gói Python và ghi file `.env` với thông tin miền `hocai.site`, tài khoản quản trị (`admin` / `phat2009`) và kết nối MariaDB mặc định.
+Script sẽ tạo `.venv` với Python 3.11, cài gói và ghi file `.env` với thông tin miền `hocai.site`, tài khoản quản trị (`admin` / `phat2009`) và kết nối MariaDB mặc định.
+Nếu máy chủ có nhiều phiên bản Python, đặt biến `PYTHON_BIN=python3.11` trước khi chạy để khớp "Setup Python App 3.11.11".
 
 **Cài đặt thủ công:**
 1. Tạo môi trường ảo và cài đặt phụ thuộc:
    ```bash
-   python -m venv .venv
+   python3.11 -m venv .venv
    source .venv/bin/activate
    pip install -r requirements.txt
    ```
@@ -47,6 +48,7 @@ Kịch bản `deploy.sh` hỗ trợ upload mã nguồn và khởi chạy Gunicor
    export SSH_HOST=hocai.site
    export SSH_USER=root               # hoặc tài khoản có quyền sudo
    export REMOTE_DIR=/var/www/hocai   # thư mục lưu mã nguồn
+   export PYTHON_BIN=python3.11       # khớp cấu hình "Setup Python App 3.11.11"
    export DATABASE_URL="mysql+pymysql://h51ecb951c_hocai:phat2009@localhost/h51ecb951c_hocai?charset=utf8mb4"
    export SECRET_KEY="<chuoi-bi-mat>"
     export ADMIN_USERNAME=admin

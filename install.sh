@@ -6,7 +6,7 @@ set -euo pipefail
 # environment defaults for domain and admin access.
 
 APP_DIR=${APP_DIR:-"$HOME/hocai"}
-PYTHON_BIN=${PYTHON_BIN:-python3}
+PYTHON_BIN=${PYTHON_BIN:-python3.11}
 VENV_DIR="$APP_DIR/.venv"
 ENV_FILE="$APP_DIR/.env"
 
@@ -15,7 +15,7 @@ cd "$APP_DIR"
 
 # Create virtual environment if missing
 if [ ! -d "$VENV_DIR" ]; then
-  echo "[+] Creating virtualenv at $VENV_DIR"
+  echo "[+] Creating virtualenv at $VENV_DIR (using $PYTHON_BIN)"
   $PYTHON_BIN -m venv "$VENV_DIR"
 fi
 

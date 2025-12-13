@@ -15,7 +15,7 @@ SSH_USER=${SSH_USER:-root}
 REMOTE_DIR=${REMOTE_DIR:-/var/www/hocai}
 APP_PORT=${APP_PORT:-8000}
 SERVICE_NAME=${SERVICE_NAME:-hocai-site}
-PYTHON_BIN=${PYTHON_BIN:-python3}
+PYTHON_BIN=${PYTHON_BIN:-python3.11}
 
 printf "Deploying to %s@%s:%s (service: %s)\n" "$SSH_USER" "$SSH_HOST" "$REMOTE_DIR" "$SERVICE_NAME"
 
@@ -39,7 +39,7 @@ pip install -r requirements.txt
 # Write runtime environment variables for Flask/Gunicorn
 cat > .env <<ENVFILE
 SECRET_KEY=${SECRET_KEY:-thi-en-tam-secret-key}
-ADMIN_PASSWORD=${ADMIN_PASSWORD:-tientocham}
+ADMIN_PASSWORD=${ADMIN_PASSWORD:-phat2009}
 DATABASE_URL=${DATABASE_URL:-mysql+pymysql://h51ecb951c_hocai:phat2009@localhost/h51ecb951c_hocai?charset=utf8mb4}
 SERVER_NAME=${SERVER_NAME:-hocai.site}
 PREFERRED_URL_SCHEME=https

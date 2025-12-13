@@ -15,14 +15,17 @@ Website giới thiệu cây thuốc nam và bài thuốc gia truyền của dân
 chmod +x install.sh
 ./install.sh
 ```
-Script sẽ tạo `.venv` với Python 3.11, cài gói và ghi file `.env` với thông tin miền `hocai.site`, tài khoản quản trị (`admin` / `phat2009`) và kết nối MariaDB mặc định.
-Nếu máy chủ có nhiều phiên bản Python, đặt biến `PYTHON_BIN=python3.11` trước khi chạy để khớp "Setup Python App 3.11.11".
+Script sẽ tạo môi trường ảo tại `/home/h51ecb951c/virtualenv/hocai.site/var/www/hocai/3.11` (hoặc dùng lại nếu đã có), cài gói và ghi file `.env` với thông tin miền `hocai.site`, tài khoản quản trị (`admin` / `phat2009`) và kết nối MariaDB mặc định.
+Nếu máy chủ có nhiều phiên bản Python, đặt biến `PYTHON_BIN=python3.11` trước khi chạy để khớp "Setup Python App 3.11.11". Khi đăng nhập SSH, kích hoạt sẵn môi trường ảo và chuyển thư mục bằng:
+```bash
+source /home/h51ecb951c/virtualenv/hocai.site/var/www/hocai/3.11/bin/activate && cd /home/h51ecb951c/hocai.site/var/www/hocai
+```
 
 **Cài đặt thủ công:**
-1. Tạo môi trường ảo và cài đặt phụ thuộc:
+1. Tạo môi trường ảo và cài đặt phụ thuộc (đường dẫn khớp máy chủ đã cấu hình):
    ```bash
-   python3.11 -m venv .venv
-   source .venv/bin/activate
+   python3.11 -m venv /home/h51ecb951c/virtualenv/hocai.site/var/www/hocai/3.11
+   source /home/h51ecb951c/virtualenv/hocai.site/var/www/hocai/3.11/bin/activate
    pip install -r requirements.txt
    ```
 2. Cấu hình kết nối MariaDB (mặc định dùng thông tin máy chủ nội bộ):
@@ -46,9 +49,10 @@ Kịch bản `deploy.sh` hỗ trợ upload mã nguồn và khởi chạy Gunicor
 2. Thiết lập biến môi trường (tùy chỉnh khi cần):
    ```bash
    export SSH_HOST=hocai.site
-   export SSH_USER=root               # hoặc tài khoản có quyền sudo
-   export REMOTE_DIR=/var/www/hocai   # thư mục lưu mã nguồn
-   export PYTHON_BIN=python3.11       # khớp cấu hình "Setup Python App 3.11.11"
+   export SSH_USER=root                                # hoặc tài khoản có quyền sudo
+   export REMOTE_DIR=/home/h51ecb951c/hocai.site/var/www/hocai   # thư mục lưu mã nguồn
+   export VENV_DIR=/home/h51ecb951c/virtualenv/hocai.site/var/www/hocai/3.11
+   export PYTHON_BIN=python3.11                        # khớp cấu hình "Setup Python App 3.11.11"
    export DATABASE_URL="mysql+pymysql://h51ecb951c_hocai:phat2009@localhost/h51ecb951c_hocai?charset=utf8mb4"
    export SECRET_KEY="<chuoi-bi-mat>"
     export ADMIN_USERNAME=admin
@@ -59,7 +63,7 @@ Kịch bản `deploy.sh` hỗ trợ upload mã nguồn và khởi chạy Gunicor
    ```bash
    ./deploy.sh
    ```
-   Script sẽ đồng bộ mã nguồn bằng `rsync`, cài gói trong `.venv`, khởi tạo bảng CSDL và tạo dịch vụ systemd chạy Gunicorn tại `127.0.0.1:8000`.
+   Script sẽ đồng bộ mã nguồn bằng `rsync`, cài gói trong môi trường ảo tại `/home/h51ecb951c/virtualenv/hocai.site/var/www/hocai/3.11`, khởi tạo bảng CSDL và tạo dịch vụ systemd chạy Gunicorn tại `127.0.0.1:8000`.
 4. Cấu hình web server (ví dụ LiteSpeed/Apache) reverse proxy `hocai.site` tới `127.0.0.1:8000`, bật HTTPS và HTTP/2 để tận dụng SEO. Với Apache, có thể dùng cấu hình mẫu:
    ```apache
    <VirtualHost *:80>

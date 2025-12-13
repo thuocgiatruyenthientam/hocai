@@ -5,17 +5,19 @@ set -euo pipefail
 # Required env variables (can be exported before running):
 #   SSH_HOST (default: hocai.site)
 #   SSH_USER (default: root)
-#   REMOTE_DIR (default: /var/www/hocai)
+#   REMOTE_DIR (default: /home/h51ecb951c/hocai.site/var/www/hocai)
+#   VENV_DIR (default: /home/h51ecb951c/virtualenv/hocai.site/var/www/hocai/3.11)
 #   APP_PORT (default: 8000)
 #   SERVICE_NAME (default: hocai-site)
 #   SECRET_KEY, ADMIN_PASSWORD, DATABASE_URL, SERVER_NAME (optional overrides)
 
 SSH_HOST=${SSH_HOST:-hocai.site}
 SSH_USER=${SSH_USER:-root}
-REMOTE_DIR=${REMOTE_DIR:-/var/www/hocai}
+REMOTE_DIR=${REMOTE_DIR:-/home/h51ecb951c/hocai.site/var/www/hocai}
 APP_PORT=${APP_PORT:-8000}
 SERVICE_NAME=${SERVICE_NAME:-hocai-site}
 PYTHON_BIN=${PYTHON_BIN:-python3.11}
+VENV_DIR=${VENV_DIR:-/home/h51ecb951c/virtualenv/hocai.site/var/www/hocai/3.11}
 
 printf "Deploying to %s@%s:%s (service: %s)\n" "$SSH_USER" "$SSH_HOST" "$REMOTE_DIR" "$SERVICE_NAME"
 
@@ -28,11 +30,15 @@ rsync -az --delete \
 
 ssh "${SSH_USER}@${SSH_HOST}" bash <<EOF_REMOTE
 set -euo pipefail
+mkdir -p "${REMOTE_DIR}"
 cd "${REMOTE_DIR}"
 
 # Setup Python env and dependencies
-${PYTHON_BIN} -m venv .venv
-source .venv/bin/activate
+mkdir -p "${VENV_DIR%/*}"
+if [ ! -d "$VENV_DIR" ]; then
+  ${PYTHON_BIN} -m venv "$VENV_DIR"
+fi
+source "$VENV_DIR/bin/activate"
 pip install --upgrade pip
 pip install -r requirements.txt
 
@@ -64,7 +70,7 @@ After=network.target
 [Service]
 WorkingDirectory=${REMOTE_DIR}
 EnvironmentFile=${REMOTE_DIR}/.env
-ExecStart=${REMOTE_DIR}/.venv/bin/gunicorn --workers 2 --threads 2 --bind 127.0.0.1:${APP_PORT} app:app
+ExecStart=${VENV_DIR}/bin/gunicorn --workers 2 --threads 2 --bind 127.0.0.1:${APP_PORT} app:app
 Restart=always
 User=www-data
 Group=www-data

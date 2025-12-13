@@ -5,9 +5,9 @@ set -euo pipefail
 # It provisions a Python virtual environment, installs dependencies, and writes
 # environment defaults for domain and admin access.
 
-APP_DIR=${APP_DIR:-"$HOME/hocai"}
+APP_DIR=${APP_DIR:-"/home/h51ecb951c/hocai.site/var/www/hocai"}
 PYTHON_BIN=${PYTHON_BIN:-python3.11}
-VENV_DIR="$APP_DIR/.venv"
+VENV_DIR=${VENV_DIR:-"/home/h51ecb951c/virtualenv/hocai.site/var/www/hocai/3.11"}
 ENV_FILE="$APP_DIR/.env"
 
 mkdir -p "$APP_DIR"
@@ -16,6 +16,7 @@ cd "$APP_DIR"
 # Create virtual environment if missing
 if [ ! -d "$VENV_DIR" ]; then
   echo "[+] Creating virtualenv at $VENV_DIR (using $PYTHON_BIN)"
+  mkdir -p "$(dirname "$VENV_DIR")"
   $PYTHON_BIN -m venv "$VENV_DIR"
 fi
 

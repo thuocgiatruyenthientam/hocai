@@ -16,7 +16,7 @@ SSH_USER=${SSH_USER:-root}
 REMOTE_DIR=${REMOTE_DIR:-/home/h51ecb951c/hocai.site/var/www/hocai}
 APP_PORT=${APP_PORT:-8000}
 SERVICE_NAME=${SERVICE_NAME:-hocai-site}
-PYTHON_BIN=${PYTHON_BIN:-python3.11}
+PYTHON_BIN=${PYTHON_BIN:-python3}
 VENV_DIR=${VENV_DIR:-/home/h51ecb951c/virtualenv/hocai.site/var/www/hocai/3.11}
 
 printf "Deploying to %s@%s:%s (service: %s)\n" "$SSH_USER" "$SSH_HOST" "$REMOTE_DIR" "$SERVICE_NAME"

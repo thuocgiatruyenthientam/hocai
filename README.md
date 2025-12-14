@@ -13,10 +13,12 @@ Website giới thiệu cây thuốc nam và bài thuốc gia truyền của dân
 **Cài đặt nhanh (đã khớp môi trường Setup Python App 3.11.11):**
 ```bash
 chmod +x install.sh
-./install.sh
+bash install.sh   # hoặc ./install.sh nếu có quyền thực thi
 ```
+> Lưu ý: đừng chạy nhầm `pip install install.sh` hoặc đưa file này vào danh sách yêu cầu của pip; pip sẽ coi dòng `set -euo pipefail` là gói và báo lỗi như "Invalid requirement: set -e". Hãy thực thi script bằng Bash.
+
 Script sẽ tạo môi trường ảo tại `/home/h51ecb951c/virtualenv/hocai.site/var/www/hocai/3.11` (hoặc dùng lại nếu đã có), cài gói và ghi file `.env` với thông tin miền `hocai.site`, tài khoản quản trị (`admin` / `phat2009`) và kết nối MariaDB mặc định.
-Nếu máy chủ có nhiều phiên bản Python, đặt biến `PYTHON_BIN=python3.11` trước khi chạy để khớp "Setup Python App 3.11.11". Khi đăng nhập SSH, kích hoạt sẵn môi trường ảo và chuyển thư mục bằng:
+Nếu máy chủ có nhiều phiên bản Python, đặt biến `PYTHON_BIN=python3.11` trước khi chạy để khớp "Setup Python App 3.11.11" (script tự động fallback sang python3.11 nếu `python3` không tồn tại). Khi đăng nhập SSH, kích hoạt sẵn môi trường ảo và chuyển thư mục bằng:
 ```bash
 source /home/h51ecb951c/virtualenv/hocai.site/var/www/hocai/3.11/bin/activate && cd /home/h51ecb951c/hocai.site/var/www/hocai
 ```

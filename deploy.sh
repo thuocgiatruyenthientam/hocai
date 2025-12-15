@@ -21,6 +21,9 @@ VENV_DIR=${VENV_DIR:-/home/h51ecb951c/virtualenv/hocai.site/var/www/hocai/3.11}
 
 printf "Deploying to %s@%s:%s (service: %s)\n" "$SSH_USER" "$SSH_HOST" "$REMOTE_DIR" "$SERVICE_NAME"
 
+# Ensure remote target directory tree exists before syncing
+ssh "${SSH_USER}@${SSH_HOST}" "mkdir -p '${REMOTE_DIR}'"
+
 # Sync source (excluding virtualenv, git metadata, caches)
 rsync -az --delete \
   --exclude '.venv' \

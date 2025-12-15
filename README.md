@@ -48,9 +48,10 @@ source /home/h51ecb951c/virtualenv/hocai.site/var/www/hocai/3.11/bin/activate &&
 Kịch bản `deploy.sh` hỗ trợ upload mã nguồn và khởi chạy Gunicorn sau LiteSpeed/Apache/nginx. Yêu cầu có SSH vào máy chủ.
 
 1. Tạo bản ghi DNS A cho `hocai.site` trỏ tới IP máy chủ.
-2. Thiết lập biến môi trường (tùy chỉnh khi cần):
+2. Thiết lập biến môi trường (tùy chỉnh khi cần, máy chủ SSH `cda004.secureweb.vn` mở port 2222):
    ```bash
-   export SSH_HOST=hocai.site
+   export SSH_HOST=cda004.secureweb.vn
+   export SSH_PORT=2222
    export SSH_USER=root                                # hoặc tài khoản có quyền sudo
    export REMOTE_DIR=/home/h51ecb951c/hocai.site/var/www/hocai   # thư mục lưu mã nguồn
    export VENV_DIR=/home/h51ecb951c/virtualenv/hocai.site/var/www/hocai/3.11

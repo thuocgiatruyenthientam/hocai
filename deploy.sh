@@ -3,7 +3,8 @@ set -euo pipefail
 
 # Simple deployment helper for hocai.site
 # Required env variables (can be exported before running):
-#   SSH_HOST (default: hocai.site)
+#   SSH_HOST (default: cda004.secureweb.vn)
+#   SSH_PORT (default: 2222)
 #   SSH_USER (default: root)
 #   REMOTE_DIR (default: /home/h51ecb951c/hocai.site/var/www/hocai)
 #   VENV_DIR (default: /home/h51ecb951c/virtualenv/hocai.site/var/www/hocai/3.11)
@@ -11,7 +12,8 @@ set -euo pipefail
 #   SERVICE_NAME (default: hocai-site)
 #   SECRET_KEY, ADMIN_PASSWORD, DATABASE_URL, SERVER_NAME (optional overrides)
 
-SSH_HOST=${SSH_HOST:-hocai.site}
+SSH_HOST=${SSH_HOST:-cda004.secureweb.vn}
+SSH_PORT=${SSH_PORT:-2222}
 SSH_USER=${SSH_USER:-root}
 REMOTE_DIR=${REMOTE_DIR:-/home/h51ecb951c/hocai.site/var/www/hocai}
 APP_PORT=${APP_PORT:-8000}
@@ -19,19 +21,20 @@ SERVICE_NAME=${SERVICE_NAME:-hocai-site}
 PYTHON_BIN=${PYTHON_BIN:-python3}
 VENV_DIR=${VENV_DIR:-/home/h51ecb951c/virtualenv/hocai.site/var/www/hocai/3.11}
 
-printf "Deploying to %s@%s:%s (service: %s)\n" "$SSH_USER" "$SSH_HOST" "$REMOTE_DIR" "$SERVICE_NAME"
+printf "Deploying to %s@%s:%s via port %s (service: %s)\n" "$SSH_USER" "$SSH_HOST" "$REMOTE_DIR" "$SSH_PORT" "$SERVICE_NAME"
 
 # Ensure remote target directory tree exists before syncing
-ssh "${SSH_USER}@${SSH_HOST}" "mkdir -p '${REMOTE_DIR}'"
+ssh -p "${SSH_PORT}" "${SSH_USER}@${SSH_HOST}" "mkdir -p '${REMOTE_DIR}'"
 
 # Sync source (excluding virtualenv, git metadata, caches)
 rsync -az --delete \
   --exclude '.venv' \
   --exclude '__pycache__' \
   --exclude '.git' \
+  -e "ssh -p ${SSH_PORT}" \
   ./ "${SSH_USER}@${SSH_HOST}:${REMOTE_DIR}"
 
-ssh "${SSH_USER}@${SSH_HOST}" bash <<EOF_REMOTE
+ssh -p "${SSH_PORT}" "${SSH_USER}@${SSH_HOST}" bash <<EOF_REMOTE
 set -euo pipefail
 mkdir -p "${REMOTE_DIR}"
 cd "${REMOTE_DIR}"

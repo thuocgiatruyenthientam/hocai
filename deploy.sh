@@ -6,7 +6,7 @@ set -euo pipefail
 #   SSH_HOST (default: cda004.secureweb.vn)
 #   SSH_PORT (default: 2222)
 #   SSH_USER (default: root)
-#   REMOTE_DIR (default: /home/h51ecb951c/domains/hocai.site/var/www/hocai)
+#   REMOTE_DIR (default: /home/h51ecb951c/domains/hocai.site)
 #   VENV_DIR (default: /home/h51ecb951c/virtualenv/hocai.site/var/www/hocai/3.11)
 #   APP_PORT (default: 8000)
 #   SERVICE_NAME (default: hocai-site)
@@ -15,7 +15,7 @@ set -euo pipefail
 SSH_HOST=${SSH_HOST:-cda004.secureweb.vn}
 SSH_PORT=${SSH_PORT:-2222}
 SSH_USER=${SSH_USER:-root}
-REMOTE_DIR=${REMOTE_DIR:-/home/h51ecb951c/domains/hocai.site/var/www/hocai}
+REMOTE_DIR=${REMOTE_DIR:-/home/h51ecb951c/domains/hocai.site}
 APP_PORT=${APP_PORT:-8000}
 SERVICE_NAME=${SERVICE_NAME:-hocai-site}
 PYTHON_BIN=${PYTHON_BIN:-python3}

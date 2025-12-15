@@ -1,0 +1,8 @@
+{% extends 'base.html' %}
+{% block content %}
+<div class="text-center py-5">
+  <h1 class="display-5 text-success">404</h1>
+  <p class="lead">Trang bạn tìm không tồn tại hoặc đã được di chuyển.</p>
+  <a class="btn btn-success" href="{{ url_for('home') }}">Về trang chủ</a>
+</div>
+{% endblock %}

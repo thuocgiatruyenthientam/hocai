@@ -1,0 +1,8 @@
+{% extends 'base.html' %}
+{% block content %}
+<div class="text-center py-5">
+  <h1 class="display-5 text-success">403</h1>
+  <p class="lead">Bạn cần đăng nhập để truy cập khu vực quản trị.</p>
+  <a class="btn btn-success" href="{{ url_for('admin_login') }}">Đăng nhập</a>
+</div>
+{% endblock %}

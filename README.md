@@ -20,7 +20,7 @@ bash install.sh   # hoặc ./install.sh nếu có quyền thực thi
 Script sẽ tạo môi trường ảo tại `/home/h51ecb951c/virtualenv/hocai.site/var/www/hocai/3.11` (hoặc dùng lại nếu đã có), cài gói và ghi file `.env` với thông tin miền `hocai.site`, tài khoản quản trị (`admin` / `phat2009`) và kết nối MariaDB mặc định.
 Nếu máy chủ có nhiều phiên bản Python, đặt biến `PYTHON_BIN=python3.11` trước khi chạy để khớp "Setup Python App 3.11.11" (script tự động fallback sang python3.11 nếu `python3` không tồn tại). Khi đăng nhập SSH, kích hoạt sẵn môi trường ảo và chuyển thư mục bằng:
 ```bash
-source /home/h51ecb951c/virtualenv/hocai.site/var/www/hocai/3.11/bin/activate && cd /home/h51ecb951c/hocai.site/var/www/hocai
+source /home/h51ecb951c/virtualenv/hocai.site/var/www/hocai/3.11/bin/activate && cd /home/h51ecb951c/domains/hocai.site/var/www/hocai
 ```
 
 **Cài đặt thủ công:**
@@ -53,7 +53,7 @@ Kịch bản `deploy.sh` hỗ trợ upload mã nguồn và khởi chạy Gunicor
    export SSH_HOST=cda004.secureweb.vn
    export SSH_PORT=2222
    export SSH_USER=root                                # hoặc tài khoản có quyền sudo
-   export REMOTE_DIR=/home/h51ecb951c/hocai.site/var/www/hocai   # thư mục lưu mã nguồn
+   export REMOTE_DIR=/home/h51ecb951c/domains/hocai.site/var/www/hocai   # thư mục lưu mã nguồn
    export VENV_DIR=/home/h51ecb951c/virtualenv/hocai.site/var/www/hocai/3.11
    export PYTHON_BIN=python3.11                        # khớp cấu hình "Setup Python App 3.11.11"
    export DATABASE_URL="mysql+pymysql://h51ecb951c_hocai:phat2009@localhost/h51ecb951c_hocai?charset=utf8mb4"

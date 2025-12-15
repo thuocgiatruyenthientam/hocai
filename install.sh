@@ -5,7 +5,7 @@ set -euo pipefail
 # It provisions a Python virtual environment, installs dependencies, and writes
 # environment defaults for domain and admin access.
 
-APP_DIR=${APP_DIR:-"/home/h51ecb951c/hocai.site/var/www/hocai"}
+APP_DIR=${APP_DIR:-"/home/h51ecb951c/domains/hocai.site/var/www/hocai"}
 PYTHON_BIN=${PYTHON_BIN:-python3}
 VENV_DIR=${VENV_DIR:-"/home/h51ecb951c/virtualenv/hocai.site/var/www/hocai/3.11"}
 ENV_FILE="$APP_DIR/.env"

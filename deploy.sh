@@ -7,7 +7,7 @@ set -euo pipefail
 #   SSH_PORT (default: 2222)
 #   SSH_USER (default: root)
 #   REMOTE_DIR (default: /home/h51ecb951c/domains/hocai.site)
-#   VENV_DIR (default: /home/h51ecb951c/virtualenv/hocai.site/var/www/hocai/3.11)
+#   VENV_DIR (default: /home/h51ecb951c/virtualenv/hocai.site/3.11)
 #   APP_PORT (default: 8000)
 #   SERVICE_NAME (default: hocai-site)
 #   SECRET_KEY, ADMIN_PASSWORD, DATABASE_URL, SERVER_NAME (optional overrides)
@@ -19,7 +19,7 @@ REMOTE_DIR=${REMOTE_DIR:-/home/h51ecb951c/domains/hocai.site}
 APP_PORT=${APP_PORT:-8000}
 SERVICE_NAME=${SERVICE_NAME:-hocai-site}
 PYTHON_BIN=${PYTHON_BIN:-python3}
-VENV_DIR=${VENV_DIR:-/home/h51ecb951c/virtualenv/hocai.site/var/www/hocai/3.11}
+VENV_DIR=${VENV_DIR:-/home/h51ecb951c/virtualenv/hocai.site/3.11}
 
 printf "Deploying to %s@%s:%s via port %s (service: %s)\n" "$SSH_USER" "$SSH_HOST" "$REMOTE_DIR" "$SSH_PORT" "$SERVICE_NAME"
 

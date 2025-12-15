@@ -7,7 +7,7 @@ set -euo pipefail
 
 APP_DIR=${APP_DIR:-"/home/h51ecb951c/domains/hocai.site"}
 PYTHON_BIN=${PYTHON_BIN:-python3}
-VENV_DIR=${VENV_DIR:-"/home/h51ecb951c/virtualenv/hocai.site/var/www/hocai/3.11"}
+VENV_DIR=${VENV_DIR:-"/home/h51ecb951c/virtualenv/hocai.site/3.11"}
 ENV_FILE="$APP_DIR/.env"
 
 # Provide a graceful fallback if python3.11 is available but python3 points elsewhere

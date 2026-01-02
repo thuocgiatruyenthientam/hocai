@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="vi">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Danh mục thuốc Nam</title>
+    <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/npm/@picocss/pico@2.0.6/css/pico.min.css"
+    />
+  </head>
+  <body>
+    <main class="container">
+      <header>
+        <h1>Thuốc Nam</h1>
+        <p>Danh sách thảo dược và bài thuốc với dữ liệu PostgreSQL.</p>
+      </header>
+      {% if products %}
+      <div class="grid">
+        {% for product in products %}
+        <article>
+          <header>
+            <h3>{{ product.name }}</h3>
+            <small>{{ product.scientific_name }}</small>
+          </header>
+          <p><strong>Danh mục:</strong> {{ product.category.name }}</p>
+          <p>{{ product.description|default:"Chưa có mô tả" }}</p>
+          {% if product.usage %}
+          <p><strong>Cách dùng:</strong> {{ product.usage }}</p>
+          {% endif %}
+          {% if product.dosage %}
+          <p><strong>Liều lượng:</strong> {{ product.dosage }}</p>
+          {% endif %}
+          <p><strong>Xuất xứ:</strong> {{ product.origin|default:"Đang cập nhật" }}</p>
+          <footer class="grid">
+            <span><strong>Giá:</strong> {{ product.price }} đ</span>
+            <span><strong>Tồn kho:</strong> {{ product.stock }}</span>
+          </footer>
+        </article>
+        {% endfor %}
+      </div>
+      {% else %}
+      <p>Chưa có dữ liệu thảo dược. Hãy thêm sản phẩm mới trong trang quản trị.</p>
+      {% endif %}
+    </main>
+  </body>
+</html>

@@ -17,7 +17,13 @@ pip install -r requirements.txt
 
 ## Cấu hình cơ sở dữ liệu
 
-Ứng dụng mặc định dùng MySQL với thông số của hocai.site (có thể override bằng biến môi trường):
+Ứng dụng mặc định dùng MySQL với thông số của hocai.site (có thể override bằng biến môi trường). Sao chép file cấu hình mẫu:
+
+```bash
+cp .env.example .env
+```
+
+Các giá trị mặc định:
 
 ```bash
 export MYSQL_NAME=h51ecb951c_hocai

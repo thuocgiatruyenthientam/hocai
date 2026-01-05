@@ -5,7 +5,7 @@
 ## Yêu cầu
 
 - Python 3.11+
-- MySQL 8+ (hoặc SQLite cho môi trường phát triển nhanh)
+- MySQL/MariaDB (hoặc SQLite cho môi trường phát triển nhanh)
 
 ## Cài đặt
 
@@ -23,13 +23,13 @@ pip install -r requirements.txt
 cp .env.example .env
 ```
 
-Các giá trị mặc định:
+Các giá trị mặc định (đã khớp với máy chủ MariaDB 10.5.28 trên hocai.site):
 
 ```bash
 export MYSQL_NAME=h51ecb951c_hocai
-export MYSQL_USER=h51ecb951c_hocai
+export MYSQL_USER=h51ecb951c__FFkxnc5UnmHTS_P4IGjzIGk17RQZCl5n
 export MYSQL_PASSWORD=phat2009
-export MYSQL_HOST=localhost
+export MYSQL_HOST=localhost  # MariaDB chạy local qua UNIX socket
 export MYSQL_PORT=3306
 ```
 
@@ -66,7 +66,8 @@ Script `scripts/deploy_hocai_site.sh` sẽ tự động:
 
 Mặc định script sẽ triển khai với domain `hocai.site` cùng đường dẫn/virtualenv sẵn có và thông tin MySQL:
 
-- Database/User: `h51ecb951c_hocai`
+- Database: `h51ecb951c_hocai`
+- User: `h51ecb951c__FFkxnc5UnmHTS_P4IGjzIGk17RQZCl5n`
 - Password: `phat2009`
  - PROJECT_ROOT: `/home/h51ecb951c/domains/hocai.site/thuocnam`
  - PYTHON_BIN: `/home/h51ecb951c/virtualenv/domains/hocai.site/thuocnam/3.11/bin/python`

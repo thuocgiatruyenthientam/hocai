@@ -65,7 +65,9 @@ else:
         "default": {
             "ENGINE": "django.db.backends.mysql",
             "NAME": os.getenv("MYSQL_NAME", "h51ecb951c_hocai"),
-            "USER": os.getenv("MYSQL_USER", "h51ecb951c_hocai"),
+            "USER": os.getenv(
+                "MYSQL_USER", "h51ecb951c__FFkxnc5UnmHTS_P4IGjzIGk17RQZCl5n"
+            ),
             "PASSWORD": os.getenv("MYSQL_PASSWORD", "phat2009"),
             "HOST": os.getenv("MYSQL_HOST", "localhost"),
             "PORT": os.getenv("MYSQL_PORT", "3306"),

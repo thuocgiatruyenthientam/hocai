@@ -12,16 +12,16 @@ if [[ $EUID -ne 0 ]]; then
 fi
 
 DOMAIN=${DOMAIN:-hocai.site}
-PROJECT_ROOT=${PROJECT_ROOT:-/opt/hocai}
+PROJECT_ROOT=${PROJECT_ROOT:-/home/h51ecb951c/domains/hocai.site/thuocnam}
 SOURCE_DIR=${SOURCE_DIR:-$(pwd)}
-APP_USER=${APP_USER:-hocai}
+APP_USER=${APP_USER:-h51ecb951c}
 MYSQL_NAME=${MYSQL_NAME:-h51ecb951c_hocai}
 MYSQL_USER=${MYSQL_USER:-h51ecb951c_hocai}
 MYSQL_PASSWORD=${MYSQL_PASSWORD:-phat2009}
 DJANGO_SECRET_KEY=${DJANGO_SECRET_KEY:-$(openssl rand -hex 32)}
 DJANGO_ALLOWED_HOSTS=${DJANGO_ALLOWED_HOSTS:-"$DOMAIN,www.$DOMAIN,localhost,127.0.0.1"}
 GUNICORN_WORKERS=${GUNICORN_WORKERS:-3}
-PYTHON_BIN=${PYTHON_BIN:-python3}
+PYTHON_BIN=${PYTHON_BIN:-/home/h51ecb951c/virtualenv/domains/hocai.site/thuocnam/3.11/bin/python}
 
 apt-get update
 apt-get install -y python3-venv python3-pip python3-dev build-essential default-libmysqlclient-dev mysql-server nginx rsync

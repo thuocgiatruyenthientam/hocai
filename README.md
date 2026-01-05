@@ -51,16 +51,25 @@ Mở trình duyệt tại `http://127.0.0.1:8000/` để xem danh sách thuốc 
 
 ## Triển khai lên máy chủ hocai.site
 
+Python sản xuất trên máy chủ hocai.site được chạy qua virtualenv mặc định:
+
+```bash
+source /home/h51ecb951c/virtualenv/domains/hocai.site/thuocnam/3.11/bin/activate
+cd /home/h51ecb951c/domains/hocai.site/thuocnam
+```
+
 Script `scripts/deploy_hocai_site.sh` sẽ tự động:
 
 - Cài đặt MySQL, Python build deps, Nginx và Gunicorn.
 - Tạo database/user MySQL và file `.env` chứa biến môi trường.
 - Thiết lập virtualenv, chạy migrate/collectstatic, và cấu hình service Gunicorn + reverse proxy Nginx.
 
-Mặc định script sẽ triển khai với domain `hocai.site` và thông tin MySQL:
+Mặc định script sẽ triển khai với domain `hocai.site` cùng đường dẫn/virtualenv sẵn có và thông tin MySQL:
 
 - Database/User: `h51ecb951c_hocai`
 - Password: `phat2009`
+ - PROJECT_ROOT: `/home/h51ecb951c/domains/hocai.site/thuocnam`
+ - PYTHON_BIN: `/home/h51ecb951c/virtualenv/domains/hocai.site/thuocnam/3.11/bin/python`
 
 Chạy ví dụ (trên máy chủ Ubuntu/Debian, với quyền root):
 

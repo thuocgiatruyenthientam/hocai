@@ -3,7 +3,7 @@ set -euo pipefail
 
 # Kịch bản triển khai nhanh Thuốc Nam lên máy chủ hocai.site (Ubuntu/Debian)
 # Yêu cầu: chạy với quyền root. Có thể điều chỉnh các biến sau theo nhu cầu:
-#   DOMAIN, PROJECT_ROOT, APP_USER, POSTGRES_NAME, POSTGRES_USER, POSTGRES_PASSWORD,
+#   DOMAIN, PROJECT_ROOT, APP_USER, MYSQL_NAME, MYSQL_USER, MYSQL_PASSWORD,
 #   DJANGO_SECRET_KEY, DJANGO_ALLOWED_HOSTS, GUNICORN_WORKERS, SOURCE_DIR
 
 if [[ $EUID -ne 0 ]]; then
@@ -15,16 +15,16 @@ DOMAIN=${DOMAIN:-hocai.site}
 PROJECT_ROOT=${PROJECT_ROOT:-/opt/hocai}
 SOURCE_DIR=${SOURCE_DIR:-$(pwd)}
 APP_USER=${APP_USER:-hocai}
-POSTGRES_NAME=${POSTGRES_NAME:-thuocnam}
-POSTGRES_USER=${POSTGRES_USER:-thuocnam}
-POSTGRES_PASSWORD=${POSTGRES_PASSWORD:-$(openssl rand -hex 16)}
+MYSQL_NAME=${MYSQL_NAME:-thuocnam}
+MYSQL_USER=${MYSQL_USER:-thuocnam}
+MYSQL_PASSWORD=${MYSQL_PASSWORD:-$(openssl rand -hex 16)}
 DJANGO_SECRET_KEY=${DJANGO_SECRET_KEY:-$(openssl rand -hex 32)}
 DJANGO_ALLOWED_HOSTS=${DJANGO_ALLOWED_HOSTS:-"$DOMAIN,www.$DOMAIN,localhost,127.0.0.1"}
 GUNICORN_WORKERS=${GUNICORN_WORKERS:-3}
 PYTHON_BIN=${PYTHON_BIN:-python3}
 
 apt-get update
-apt-get install -y python3-venv python3-pip python3-dev build-essential libpq-dev postgresql nginx rsync
+apt-get install -y python3-venv python3-pip python3-dev build-essential default-libmysqlclient-dev mysql-server nginx rsync
 
 # Tạo user chạy ứng dụng nếu chưa có
 if ! id -u "$APP_USER" >/dev/null 2>&1; then
@@ -36,25 +36,21 @@ rsync -a --delete --exclude ".git" --exclude ".venv" "$SOURCE_DIR"/ "$PROJECT_RO
 chown -R "$APP_USER":"$APP_USER" "$PROJECT_ROOT"
 cd "$PROJECT_ROOT"
 
-# Tạo database và user PostgreSQL
-if ! sudo -u postgres psql -tAc "SELECT 1 FROM pg_roles WHERE rolname='$POSTGRES_USER'" | grep -q 1; then
-  sudo -u postgres psql -c "CREATE USER \"$POSTGRES_USER\" WITH PASSWORD '$POSTGRES_PASSWORD';"
-fi
-if ! sudo -u postgres psql -tAc "SELECT 1 FROM pg_database WHERE datname='$POSTGRES_NAME'" | grep -q 1; then
-  sudo -u postgres createdb "$POSTGRES_NAME" -O "$POSTGRES_USER"
-fi
-sudo -u postgres psql -c "GRANT ALL PRIVILEGES ON DATABASE $POSTGRES_NAME TO $POSTGRES_USER;"
+# Tạo database và user MySQL
+mysql -u root -e "CREATE DATABASE IF NOT EXISTS \`$MYSQL_NAME\` DEFAULT CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci;"
+mysql -u root -e "CREATE USER IF NOT EXISTS '$MYSQL_USER'@'localhost' IDENTIFIED BY '$MYSQL_PASSWORD';"
+mysql -u root -e "GRANT ALL PRIVILEGES ON \`$MYSQL_NAME\`.* TO '$MYSQL_USER'@'localhost'; FLUSH PRIVILEGES;"
 
 # Tạo file môi trường
 cat > "$PROJECT_ROOT/.env" <<ENVVARS
 DJANGO_SECRET_KEY=$DJANGO_SECRET_KEY
 DJANGO_DEBUG=False
 DJANGO_ALLOWED_HOSTS=$DJANGO_ALLOWED_HOSTS
-POSTGRES_NAME=$POSTGRES_NAME
-POSTGRES_USER=$POSTGRES_USER
-POSTGRES_PASSWORD=$POSTGRES_PASSWORD
-POSTGRES_HOST=localhost
-POSTGRES_PORT=5432
+MYSQL_NAME=$MYSQL_NAME
+MYSQL_USER=$MYSQL_USER
+MYSQL_PASSWORD=$MYSQL_PASSWORD
+MYSQL_HOST=localhost
+MYSQL_PORT=3306
 ENVVARS
 chown "$APP_USER":"$APP_USER" "$PROJECT_ROOT/.env"
 chmod 640 "$PROJECT_ROOT/.env"
@@ -111,4 +107,4 @@ ln -sf /etc/nginx/sites-available/thuocnam.conf /etc/nginx/sites-enabled/thuocna
 nginx -t
 systemctl restart nginx
 
-echo "Triển khai hoàn tất. Trang sẽ phục vụ tại: http://$DOMAIN" 
+echo "Triển khai hoàn tất. Trang sẽ phục vụ tại: http://$DOMAIN"

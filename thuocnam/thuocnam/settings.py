@@ -49,15 +49,18 @@ TEMPLATES = [
 
 WSGI_APPLICATION = "thuocnam.wsgi.application"
 
-if os.getenv("POSTGRES_NAME"):
+if os.getenv("MYSQL_NAME"):
     DATABASES = {
         "default": {
-            "ENGINE": "django.db.backends.postgresql",
-            "NAME": os.getenv("POSTGRES_NAME"),
-            "USER": os.getenv("POSTGRES_USER", "postgres"),
-            "PASSWORD": os.getenv("POSTGRES_PASSWORD", ""),
-            "HOST": os.getenv("POSTGRES_HOST", "localhost"),
-            "PORT": os.getenv("POSTGRES_PORT", "5432"),
+            "ENGINE": "django.db.backends.mysql",
+            "NAME": os.getenv("MYSQL_NAME"),
+            "USER": os.getenv("MYSQL_USER", "root"),
+            "PASSWORD": os.getenv("MYSQL_PASSWORD", ""),
+            "HOST": os.getenv("MYSQL_HOST", "localhost"),
+            "PORT": os.getenv("MYSQL_PORT", "3306"),
+            "OPTIONS": {
+                "charset": "utf8mb4",
+            },
         }
     }
 else:

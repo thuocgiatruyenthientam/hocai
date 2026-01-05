@@ -7,7 +7,9 @@ SECRET_KEY = os.getenv("DJANGO_SECRET_KEY", "django-insecure-thuocnam-key")
 
 DEBUG = os.getenv("DJANGO_DEBUG", "True").lower() == "true"
 
-ALLOWED_HOSTS = os.getenv("DJANGO_ALLOWED_HOSTS", "*").split(",")
+ALLOWED_HOSTS = os.getenv(
+    "DJANGO_ALLOWED_HOSTS", "hocai.site,www.hocai.site,localhost,127.0.0.1"
+).split(",")
 
 INSTALLED_APPS = [
     "django.contrib.admin",
@@ -49,25 +51,27 @@ TEMPLATES = [
 
 WSGI_APPLICATION = "thuocnam.wsgi.application"
 
-if os.getenv("MYSQL_NAME"):
+USE_SQLITE = os.getenv("USE_SQLITE", "").lower() in {"1", "true", "yes"}
+
+if USE_SQLITE:
     DATABASES = {
         "default": {
-            "ENGINE": "django.db.backends.mysql",
-            "NAME": os.getenv("MYSQL_NAME"),
-            "USER": os.getenv("MYSQL_USER", "root"),
-            "PASSWORD": os.getenv("MYSQL_PASSWORD", ""),
-            "HOST": os.getenv("MYSQL_HOST", "localhost"),
-            "PORT": os.getenv("MYSQL_PORT", "3306"),
-            "OPTIONS": {
-                "charset": "utf8mb4",
-            },
+            "ENGINE": "django.db.backends.sqlite3",
+            "NAME": BASE_DIR / "db.sqlite3",
         }
     }
 else:
     DATABASES = {
         "default": {
-            "ENGINE": "django.db.backends.sqlite3",
-            "NAME": BASE_DIR / "db.sqlite3",
+            "ENGINE": "django.db.backends.mysql",
+            "NAME": os.getenv("MYSQL_NAME", "h51ecb951c_hocai"),
+            "USER": os.getenv("MYSQL_USER", "h51ecb951c_hocai"),
+            "PASSWORD": os.getenv("MYSQL_PASSWORD", "phat2009"),
+            "HOST": os.getenv("MYSQL_HOST", "localhost"),
+            "PORT": os.getenv("MYSQL_PORT", "3306"),
+            "OPTIONS": {
+                "charset": "utf8mb4",
+            },
         }
     }
 

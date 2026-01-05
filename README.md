@@ -17,7 +17,7 @@ pip install -r requirements.txt
 
 ## Cấu hình cơ sở dữ liệu
 
-Ứng dụng ưu tiên MySQL thông qua các biến môi trường (giá trị mặc định đã khớp cấu hình trên hocai.site):
+Ứng dụng mặc định dùng MySQL với thông số của hocai.site (có thể override bằng biến môi trường):
 
 ```bash
 export MYSQL_NAME=h51ecb951c_hocai
@@ -27,7 +27,11 @@ export MYSQL_HOST=localhost
 export MYSQL_PORT=3306
 ```
 
-Nếu không đặt `MYSQL_NAME`, ứng dụng sẽ tự động dùng SQLite (`db.sqlite3`) cho mục đích thử nghiệm.
+Để chạy thử nhanh bằng SQLite, thiết lập:
+
+```bash
+export USE_SQLITE=true
+```
 
 ## Khởi chạy
 

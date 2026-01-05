@@ -13,9 +13,17 @@ class ProductViewTests(TestCase):
             category=category,
             price=1000000,
             stock=5,
+            meta_title="Nhân sâm bồi bổ sức khỏe",
+            meta_description="Thông tin Nhân sâm Panax ginseng và lợi ích sức khỏe.",
+            meta_keywords="nhan sam, panax ginseng, boi bo",
         )
 
     def test_product_list_renders(self):
         response = self.client.get(reverse("product_list"))
         self.assertEqual(response.status_code, 200)
         self.assertContains(response, "Nhân sâm")
+
+    def test_slug_auto_generates(self):
+        product = HerbalProduct.objects.get(name="Nhân sâm")
+        self.assertTrue(product.slug)
+        self.assertIn("nhan-sam", product.slug)

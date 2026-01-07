@@ -24,7 +24,7 @@ GUNICORN_WORKERS=${GUNICORN_WORKERS:-3}
 PYTHON_BIN=${PYTHON_BIN:-/home/h51ecb951c/virtualenv/domains/hocai.site/thuocnam/3.11/bin/python}
 
 apt-get update
-apt-get install -y python3-venv python3-pip python3-dev build-essential default-libmysqlclient-dev mysql-server nginx rsync
+apt-get install -y python3-venv python3-pip python3-dev build-essential mysql-server nginx rsync
 
 # Tạo user chạy ứng dụng nếu chưa có
 if ! id -u "$APP_USER" >/dev/null 2>&1; then

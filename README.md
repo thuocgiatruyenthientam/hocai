@@ -6,6 +6,7 @@
 
 - Python 3.11+
 - MySQL/MariaDB (hoặc SQLite cho môi trường phát triển nhanh)
+- Driver MySQL thuần Python PyMySQL (không cần biên dịch, tránh lỗi build wheel `mysqlclient`)
 
 ## Cài đặt
 
@@ -63,6 +64,8 @@ Script `scripts/deploy_hocai_site.sh` sẽ tự động:
 - Cài đặt MySQL, Python build deps, Nginx và Gunicorn.
 - Tạo database/user MySQL và file `.env` chứa biến môi trường.
 - Thiết lập virtualenv, chạy migrate/collectstatic, và cấu hình service Gunicorn + reverse proxy Nginx.
+
+Script sử dụng PyMySQL nên không cần gói phát triển `libmysqlclient-dev` trên máy chủ, giúp tránh lỗi build wheel khi cài đặt phụ thuộc.
 
 Mặc định script sẽ triển khai với domain `hocai.site` cùng đường dẫn/virtualenv sẵn có và thông tin MySQL:
 

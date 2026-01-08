@@ -89,6 +89,11 @@ DOMAIN=hocai.site PROJECT_ROOT=/opt/hocai ./scripts/deploy_hocai_site.sh
 
 Biến môi trường hỗ trợ: `DOMAIN`, `PROJECT_ROOT`, `APP_USER`, `MYSQL_NAME`, `MYSQL_USER`, `MYSQL_PASSWORD`, `DJANGO_SECRET_KEY`, `DJANGO_ALLOWED_HOSTS`, `GUNICORN_WORKERS`, `SOURCE_DIR`.
 
+Thông tin máy chủ:
+
+- IP hosting: `113.166.70.146`
+- Hostname/Port quản trị: `cda004.secureweb.vn:2222`
+
 ### Upload sẵn source và chạy ngay (không cần root)
 
 Khi Python đã có sẵn trên máy chủ và bạn chỉ muốn upload source rồi chạy:

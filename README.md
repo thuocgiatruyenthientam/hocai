@@ -89,6 +89,29 @@ DOMAIN=hocai.site PROJECT_ROOT=/opt/hocai ./scripts/deploy_hocai_site.sh
 
 Biến môi trường hỗ trợ: `DOMAIN`, `PROJECT_ROOT`, `APP_USER`, `MYSQL_NAME`, `MYSQL_USER`, `MYSQL_PASSWORD`, `DJANGO_SECRET_KEY`, `DJANGO_ALLOWED_HOSTS`, `GUNICORN_WORKERS`, `SOURCE_DIR`.
 
+### Upload sẵn source và chạy ngay (không cần root)
+
+Khi Python đã có sẵn trên máy chủ và bạn chỉ muốn upload source rồi chạy:
+
+1. Upload toàn bộ thư mục dự án lên `/home/h51ecb951c/domains/hocai.site/thuocnam`.
+2. Tạo file `.env` từ mẫu `.env.example` và chỉnh thông số MySQL.
+3. Chạy script thiết lập:
+
+```bash
+cd /home/h51ecb951c/domains/hocai.site/thuocnam
+chmod +x scripts/setup_hocai_site_upload.sh scripts/start_gunicorn.sh scripts/stop_gunicorn.sh
+./scripts/setup_hocai_site_upload.sh
+```
+
+4. Khởi động Gunicorn (chạy ở foreground, dùng tmux/screen nếu cần):
+
+```bash
+./scripts/start_gunicorn.sh
+```
+
+LiteSpeed cần trỏ proxy tới socket: `/home/h51ecb951c/domains/hocai.site/thuocnam/gunicorn.sock`
+và phục vụ static từ `/home/h51ecb951c/domains/hocai.site/thuocnam/staticfiles/`.
+
 ## Kiểm thử
 
 ```bash

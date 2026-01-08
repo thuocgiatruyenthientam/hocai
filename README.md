@@ -56,7 +56,7 @@ Python sản xuất trên máy chủ hocai.site được chạy qua virtualenv m
 
 ```bash
 source /home/h51ecb951c/virtualenv/domains/hocai.site/thuocnam/3.11/bin/activate
-cd /home/h51ecb951c/domains/hocai.site/thuocnam
+cd /domains/hocai.site/thuocnam
 ```
 
 Script `scripts/deploy_hocai_site.sh` sẽ tự động:
@@ -72,7 +72,7 @@ Mặc định script sẽ triển khai với domain `hocai.site` cùng đường
 - Database: `h51ecb951c_hocai`
 - User: `h51ecb951c_hocai`
 - Password: `phat2009`
- - PROJECT_ROOT: `/home/h51ecb951c/domains/hocai.site/thuocnam`
+ - PROJECT_ROOT: `/domains/hocai.site/thuocnam`
  - PYTHON_BIN: `/home/h51ecb951c/virtualenv/domains/hocai.site/thuocnam/3.11/bin/python`
 
 LiteSpeed Web Server được cấu hình tại `/usr/local/lsws/conf/httpd_config.conf` và vhost `thuocnam` trong
@@ -93,12 +93,12 @@ Biến môi trường hỗ trợ: `DOMAIN`, `PROJECT_ROOT`, `APP_USER`, `MYSQL_N
 
 Khi Python đã có sẵn trên máy chủ và bạn chỉ muốn upload source rồi chạy:
 
-1. Upload toàn bộ thư mục dự án lên `/home/h51ecb951c/domains/hocai.site/thuocnam`.
+1. Upload toàn bộ thư mục dự án lên `/domains/hocai.site/thuocnam`.
 2. Tạo file `.env` từ mẫu `.env.example` và chỉnh thông số MySQL.
 3. Chạy script thiết lập:
 
 ```bash
-cd /home/h51ecb951c/domains/hocai.site/thuocnam
+cd /domains/hocai.site/thuocnam
 chmod +x scripts/setup_hocai_site_upload.sh scripts/start_gunicorn.sh scripts/stop_gunicorn.sh
 ./scripts/setup_hocai_site_upload.sh
 ```
@@ -109,8 +109,8 @@ chmod +x scripts/setup_hocai_site_upload.sh scripts/start_gunicorn.sh scripts/st
 ./scripts/start_gunicorn.sh
 ```
 
-LiteSpeed cần trỏ proxy tới socket: `/home/h51ecb951c/domains/hocai.site/thuocnam/gunicorn.sock`
-và phục vụ static từ `/home/h51ecb951c/domains/hocai.site/thuocnam/staticfiles/`.
+LiteSpeed cần trỏ proxy tới socket: `/domains/hocai.site/thuocnam/gunicorn.sock`
+và phục vụ static từ `/domains/hocai.site/thuocnam/staticfiles/`.
 
 ## Kiểm thử
 

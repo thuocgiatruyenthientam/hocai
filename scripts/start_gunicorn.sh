@@ -1,7 +1,7 @@
 #!/usr/bin/env bash
 set -euo pipefail
 
-PROJECT_ROOT=${PROJECT_ROOT:-/home/h51ecb951c/domains/hocai.site/thuocnam}
+PROJECT_ROOT=${PROJECT_ROOT:-/domains/hocai.site/thuocnam}
 ENV_FILE=${ENV_FILE:-$PROJECT_ROOT/.env}
 GUNICORN_WORKERS=${GUNICORN_WORKERS:-3}
 

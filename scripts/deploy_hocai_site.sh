@@ -12,7 +12,7 @@ if [[ $EUID -ne 0 ]]; then
 fi
 
 DOMAIN=${DOMAIN:-hocai.site}
-PROJECT_ROOT=${PROJECT_ROOT:-/home/h51ecb951c/domains/hocai.site/thuocnam}
+PROJECT_ROOT=${PROJECT_ROOT:-/domains/hocai.site/thuocnam}
 SOURCE_DIR=${SOURCE_DIR:-$(pwd)}
 APP_USER=${APP_USER:-h51ecb951c}
 MYSQL_NAME=${MYSQL_NAME:-h51ecb951c_hocai}

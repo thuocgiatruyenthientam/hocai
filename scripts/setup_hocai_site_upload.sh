@@ -4,7 +4,7 @@ set -euo pipefail
 # Thiết lập nhanh khi đã có Python trên hocai.site (không cài đặt hệ thống).
 # Chỉ cần upload source lên PROJECT_ROOT rồi chạy script này.
 
-PROJECT_ROOT=${PROJECT_ROOT:-/home/h51ecb951c/domains/hocai.site/thuocnam}
+PROJECT_ROOT=${PROJECT_ROOT:-/domains/hocai.site/thuocnam}
 PYTHON_BIN=${PYTHON_BIN:-/home/h51ecb951c/virtualenv/domains/hocai.site/thuocnam/3.11/bin/python}
 ENV_FILE=${ENV_FILE:-$PROJECT_ROOT/.env}
 

@@ -1,7 +1,7 @@
 #!/usr/bin/env bash
 set -euo pipefail
 
-PROJECT_ROOT=${PROJECT_ROOT:-/home/h51ecb951c/domains/hocai.site/thuocnam}
+PROJECT_ROOT=${PROJECT_ROOT:-/domains/hocai.site/thuocnam}
 
 if pgrep -f "gunicorn.*thuocnam.wsgi:application" >/dev/null 2>&1; then
   pkill -f "gunicorn.*thuocnam.wsgi:application"

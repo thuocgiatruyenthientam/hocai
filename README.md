@@ -67,6 +67,12 @@ Script `scripts/deploy_hocai_site.sh` sẽ tự động:
 
 Script sử dụng PyMySQL nên không cần gói phát triển `libmysqlclient-dev` trên máy chủ, giúp tránh lỗi build wheel khi cài đặt phụ thuộc.
 
+Nếu cần cài đặt LiteSpeed Web Server thủ công trước, dùng:
+
+```bash
+sudo ./scripts/install_litespeed.sh
+```
+
 Mặc định script sẽ triển khai với domain `hocai.site` cùng đường dẫn/virtualenv sẵn có và thông tin MySQL:
 
 - Database: `h51ecb951c_hocai`

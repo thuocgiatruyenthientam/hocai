@@ -3,10 +3,10 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Danh mục thuốc Nam</title>
+    <title>Thuốc Gia Truyền - Danh mục thuốc Nam</title>
     <meta
       name="description"
-      content="Danh sách thảo dược và bài thuốc Nam với thông tin cách dùng, nguồn gốc và tồn kho."
+      content="Danh mục thuốc Nam, bài thuốc gia truyền, thảo dược sạch với tư vấn sử dụng chi tiết."
     />
     <link
       rel="stylesheet"
@@ -14,39 +14,132 @@
     />
     <style>
       :root {
-        --accent: #0f9d58;
-        --muted: #e6f4ea;
+        --green-900: #0b4f2b;
+        --green-700: #118750;
+        --green-500: #1eb36e;
+        --green-200: #dff4e8;
+        --green-100: #f2fbf6;
+        --neutral-900: #1b2b23;
+        --neutral-600: #4a6156;
+        --neutral-300: #cbdad2;
       }
       body {
-        background: linear-gradient(180deg, #f3fff7 0%, #e6f4ea 100%);
+        background: var(--green-100);
+        color: var(--neutral-900);
       }
-      header.hero {
-        padding: 3rem 1.5rem;
-        text-align: center;
-        background: radial-gradient(circle at 20% 20%, rgba(15, 157, 88, 0.12), transparent 35%),
-          radial-gradient(circle at 80% 0%, rgba(15, 157, 88, 0.16), transparent 35%),
-          #fff;
-        border-radius: 20px;
-        box-shadow: 0 20px 45px rgba(15, 157, 88, 0.12);
-        margin-bottom: 2rem;
+      .topbar {
+        background: var(--green-900);
+        color: #fff;
+        font-size: 0.9rem;
+        padding: 0.35rem 0;
       }
-      h1 {
-        color: #0f9d58;
-        margin-bottom: 0.5rem;
+      .topbar .container {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        gap: 1rem;
+        flex-wrap: wrap;
       }
-      p.lead {
-        color: #35684d;
+      .brand {
+        display: flex;
+        align-items: center;
+        gap: 0.75rem;
+        font-weight: 700;
+        color: var(--green-900);
+      }
+      .brand span {
         font-size: 1.1rem;
       }
-      .grid article {
-        border: 1px solid #d8eadc;
-        box-shadow: 0 12px 28px rgba(15, 157, 88, 0.08);
-        border-radius: 16px;
-        padding: 1.25rem;
+      .nav {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        padding: 1.2rem 0 0.4rem;
+      }
+      .nav-links {
+        display: flex;
+        gap: 1rem;
+        font-weight: 600;
+      }
+      .nav-links a {
+        color: var(--neutral-600);
+        text-decoration: none;
+      }
+      .hero {
+        margin-top: 1.5rem;
+        padding: 2.8rem 2.2rem;
+        border-radius: 24px;
+        background: linear-gradient(120deg, rgba(17, 135, 80, 0.1), rgba(30, 179, 110, 0.2)),
+          #fff;
+        box-shadow: 0 20px 40px rgba(17, 135, 80, 0.15);
+        display: grid;
+        gap: 1.5rem;
+        grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+        align-items: center;
+      }
+      .hero h1 {
+        color: var(--green-900);
+        font-size: clamp(2rem, 3vw, 2.8rem);
+        margin-bottom: 0.4rem;
+      }
+      .hero p {
+        color: var(--neutral-600);
+        margin-bottom: 1rem;
+      }
+      .cta {
+        display: inline-flex;
+        align-items: center;
+        gap: 0.5rem;
+        padding: 0.8rem 1.4rem;
+        background: var(--green-700);
+        color: #fff;
+        border-radius: 999px;
+        text-decoration: none;
+        font-weight: 700;
+        box-shadow: 0 10px 20px rgba(17, 135, 80, 0.3);
+      }
+      .hero-card {
         background: #fff;
+        border-radius: 18px;
+        padding: 1.2rem;
+        border: 1px solid var(--green-200);
+        display: grid;
+        gap: 0.75rem;
+      }
+      .hero-card strong {
+        color: var(--green-700);
+      }
+      .section-title {
+        margin-top: 2.5rem;
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        gap: 1rem;
+      }
+      .section-title h2 {
+        margin: 0;
+        color: var(--green-900);
+      }
+      .badge {
+        background: var(--green-200);
+        color: var(--green-700);
+        padding: 0.3rem 0.8rem;
+        border-radius: 999px;
+        font-weight: 600;
+        font-size: 0.85rem;
+      }
+      .grid {
+        margin-top: 1.2rem;
+      }
+      .grid article {
+        border: 1px solid var(--green-200);
+        border-radius: 18px;
+        padding: 1.2rem;
+        background: #fff;
+        box-shadow: 0 14px 28px rgba(17, 135, 80, 0.08);
       }
       .grid article header h3 {
-        color: #0f9d58;
+        color: var(--green-700);
         margin-bottom: 0.2rem;
       }
       .pill {
@@ -54,43 +147,101 @@
         align-items: center;
         gap: 0.35rem;
         padding: 0.2rem 0.75rem;
-        background: var(--muted);
-        color: #0f9d58;
+        background: var(--green-200);
+        color: var(--green-700);
         border-radius: 999px;
         font-weight: 600;
-        font-size: 0.9rem;
+        font-size: 0.85rem;
       }
       footer.grid {
-        color: #35684d;
+        color: var(--neutral-600);
         font-weight: 600;
       }
       small {
-        color: #5a7c63;
+        color: var(--neutral-600);
       }
-      .cta {
-        display: inline-flex;
-        align-items: center;
-        justify-content: center;
-        gap: 0.5rem;
-        padding: 0.8rem 1.4rem;
-        background: #0f9d58;
-        color: #fff;
-        border-radius: 12px;
-        text-decoration: none;
-        font-weight: 700;
-        box-shadow: 0 10px 25px rgba(15, 157, 88, 0.3);
+      .steps {
+        margin-top: 2rem;
+        display: grid;
+        gap: 1rem;
+        grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+      }
+      .steps article {
+        background: #fff;
+        border: 1px solid var(--neutral-300);
+        border-radius: 16px;
+        padding: 1rem;
       }
     </style>
   </head>
   <body>
+    <div class="topbar">
+      <div class="container">
+        <span>Tư vấn bài thuốc gia truyền - Hỗ trợ tận tâm</span>
+        <span>Hotline: 0988 888 888</span>
+      </div>
+    </div>
     <main class="container">
-      <header class="hero">
-        <h1>Thuốc Nam</h1>
-        <p class="lead">Danh sách thảo dược và bài thuốc với dữ liệu MySQL.</p>
-        <a class="cta" href="#products">Khám phá ngay</a>
-      </header>
+      <nav class="nav">
+        <div class="brand">
+          <span>Thuốc Gia Truyền</span>
+        </div>
+        <div class="nav-links">
+          <a href="#gioi-thieu">Giới thiệu</a>
+          <a href="#chuyen-muc">Chuyên mục</a>
+          <a href="#products">Sản phẩm</a>
+          <a href="#lien-he">Liên hệ</a>
+        </div>
+      </nav>
+      <section class="hero" id="gioi-thieu">
+        <div>
+          <p class="badge">Thảo dược sạch · Bài thuốc gia truyền</p>
+          <h1>Thuốc Nam chuẩn vị, tư vấn tận tâm</h1>
+          <p>
+            Tổng hợp danh mục bài thuốc gia truyền, thảo dược quý và hướng dẫn sử
+            dụng rõ ràng. Kết nối nhanh với đội ngũ tư vấn của hocai.site.
+          </p>
+          <a class="cta" href="#products">Xem danh mục thuốc</a>
+        </div>
+        <div class="hero-card">
+          <strong>Cam kết từ nhà thuốc</strong>
+          <p>Chọn lọc dược liệu sạch, nguồn gốc rõ ràng, bảo quản chuẩn.</p>
+          <strong>Hỗ trợ 24/7</strong>
+          <p>Tư vấn liệu trình và cách dùng chi tiết theo từng nhu cầu.</p>
+          <strong>Giao hàng toàn quốc</strong>
+          <p>Đóng gói an toàn, giao hàng nhanh, đảm bảo chất lượng.</p>
+        </div>
+      </section>
+
+      <div class="section-title" id="chuyen-muc">
+        <h2>Chuyên mục nổi bật</h2>
+        <span class="badge">Bài thuốc truyền thống</span>
+      </div>
+      <div class="steps">
+        <article>
+          <h3>Thuốc xương khớp</h3>
+          <p>Giảm đau nhức, hỗ trợ vận động và phục hồi sức khỏe.</p>
+        </article>
+        <article>
+          <h3>Thuốc dạ dày</h3>
+          <p>Làm dịu triệu chứng khó tiêu, cải thiện hấp thu.</p>
+        </article>
+        <article>
+          <h3>Thuốc gan</h3>
+          <p>Thanh lọc cơ thể, hỗ trợ chức năng gan.</p>
+        </article>
+        <article>
+          <h3>Thảo dược ngâm rượu</h3>
+          <p>Bồi bổ sức khỏe, tăng cường đề kháng.</p>
+        </article>
+      </div>
+
+      <div class="section-title" id="products">
+        <h2>Danh mục sản phẩm</h2>
+        <span class="badge">Cập nhật mỗi ngày</span>
+      </div>
       {% if products %}
-      <div id="products" class="grid">
+      <div class="grid">
         {% for product in products %}
         <article>
           <header>
@@ -114,8 +265,20 @@
         {% endfor %}
       </div>
       {% else %}
-      <p>Chưa có dữ liệu thảo dược. Hãy thêm sản phẩm mới trong trang quản trị.</p>
+      <article>
+        <p>Chưa có dữ liệu thảo dược. Hãy thêm sản phẩm mới trong trang quản trị.</p>
+        <a class="cta" href="/admin/">Đi tới quản trị</a>
+      </article>
       {% endif %}
+
+      <div class="section-title" id="lien-he">
+        <h2>Liên hệ tư vấn</h2>
+        <span class="badge">hocai.site</span>
+      </div>
+      <p>
+        Đội ngũ chuyên môn luôn sẵn sàng tư vấn liệu trình và cách dùng phù hợp
+        với từng nhu cầu.
+      </p>
     </main>
   </body>
 </html>

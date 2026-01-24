@@ -44,21 +44,21 @@ source /home/h51ecb951c/virtualenv/hocai.site/3.11/bin/activate && cd /home/h51e
    flask --app app run --host 0.0.0.0 --port 5000
    ```
 
-## Triển khai lên máy chủ (hocai.site)
-Kịch bản `deploy.sh` hỗ trợ upload mã nguồn và khởi chạy Gunicorn sau LiteSpeed/Apache/nginx. Yêu cầu có SSH vào máy chủ.
+## Triển khai lên máy chủ LiteSpeed (hocai.site)
+Kịch bản `deploy.sh` đồng bộ mã nguồn, cài phụ thuộc vào đúng virtualenv và kích hoạt reload theo chuẩn LiteSpeed/Setup Python App (Passenger). Yêu cầu có SSH vào máy chủ.
 
 1. Tạo bản ghi DNS A cho `hocai.site` trỏ tới IP máy chủ.
 2. Thiết lập biến môi trường (tùy chỉnh khi cần, máy chủ SSH `cda004.secureweb.vn` mở port 2222):
    ```bash
    export SSH_HOST=cda004.secureweb.vn
    export SSH_PORT=2222
-   export SSH_USER=root                                # hoặc tài khoản có quyền sudo
-   export REMOTE_DIR=/home/h51ecb951c/domains/hocai.site                 # thư mục lưu mã nguồn
+   export SSH_USER=h51ecb951c
+   export REMOTE_DIR=/home/h51ecb951c/domains/hocai.site
    export VENV_DIR=/home/h51ecb951c/virtualenv/hocai.site/3.11
-   export PYTHON_BIN=python3.11                        # khớp cấu hình "Setup Python App 3.11.11"
+   export PYTHON_BIN=python3                            # phù hợp Setup Python App 3.11.11
    export DATABASE_URL="mysql+pymysql://h51ecb951c_hocai:phat2009@localhost/h51ecb951c_hocai?charset=utf8mb4"
    export SECRET_KEY="<chuoi-bi-mat>"
-    export ADMIN_USERNAME=admin
+   export ADMIN_USERNAME=admin
    export ADMIN_PASSWORD="phat2009"
    export SERVER_NAME=hocai.site
    ```
@@ -66,27 +66,14 @@ Kịch bản `deploy.sh` hỗ trợ upload mã nguồn và khởi chạy Gunicor
    ```bash
    ./deploy.sh
    ```
-   Script sẽ đồng bộ mã nguồn bằng `rsync`, cài gói trong môi trường ảo tại `/home/h51ecb951c/virtualenv/hocai.site/3.11`, khởi tạo bảng CSDL và tạo dịch vụ systemd chạy Gunicorn tại `127.0.0.1:8000`.
-4. Cấu hình web server (ví dụ LiteSpeed/Apache) reverse proxy `hocai.site` tới `127.0.0.1:8000`, bật HTTPS và HTTP/2 để tận dụng SEO. Với Apache, có thể dùng cấu hình mẫu:
-   ```apache
-   <VirtualHost *:80>
-     ServerName hocai.site
-     Redirect permanent / https://hocai.site/
-   </VirtualHost>
-
-   <VirtualHost *:443>
-     ServerName hocai.site
-     ProxyPreserveHost On
-     ProxyPass / http://127.0.0.1:8000/
-     ProxyPassReverse / http://127.0.0.1:8000/
-     SSLEngine on
-     SSLCertificateFile /etc/letsencrypt/live/hocai.site/fullchain.pem
-     SSLCertificateKeyFile /etc/letsencrypt/live/hocai.site/privkey.pem
-   </VirtualHost>
-   ```
-5. Kiểm tra dịch vụ:
+   Script sẽ `rsync` mã nguồn, cài gói trong môi trường ảo tại `/home/h51ecb951c/virtualenv/hocai.site/3.11`, khởi tạo bảng CSDL và `touch /home/h51ecb951c/domains/hocai.site/tmp/restart.txt` để LiteSpeed nạp lại ứng dụng.
+4. Trên giao diện **Setup Python App** của LiteSpeed/cPanel, hãy đảm bảo:
+   - Application root: `/home/h51ecb951c/domains/hocai.site`
+   - Application URL: `hocai.site/`
+   - Startup file: `passenger_wsgi.py` (hoặc `app.py` nếu host hỗ trợ trực tiếp)
+   - Python version: `3.11`
+5. Kiểm tra nhanh sau triển khai:
    ```bash
-   sudo systemctl status hocai-site.service
    curl -I https://hocai.site
    ```
    Khi cần cập nhật mã, chỉ cần chạy lại `./deploy.sh`.

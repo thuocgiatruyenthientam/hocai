@@ -1,0 +1,10 @@
+[project]
+name = "hocai"
+version = "0.1.0"
+description = "Nâng cấp nền tảng thuocgiatruyen.org lên Python mới nhất."
+requires-python = ">=3.12"
+
+[tool.black]
+line-length = 88
+
+target-version = ["py312"]
